@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lucasfelipepedro12.github.io/ferramentasja/sitemap.xml
