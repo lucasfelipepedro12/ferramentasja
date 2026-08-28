@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FerramentasJá — Ferramentas Online Grátis</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Ferramentas<span>Já</span></div>
+
+        <nav>
+            <a href="#ferramentas">Ferramentas</a>
+            <a href="#sobre">Sobre</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <p class="tag">⚡ 100% grátis</p>
+
+            <h1>
+                Ferramentas úteis.<br>
+                <span>Simples e rápidas.</span>
+            </h1>
+
+            <p class="descricao">
+                Ferramentas online gratuitas para facilitar suas tarefas do dia a dia.
+            </p>
+        </section>
+
+        <section id="ferramentas" class="ferramentas">
+
+            <div class="card">
+                <div class="icone">▣</div>
+
+                <h2>Gerador de QR Code</h2>
+
+                <p>
+                    Crie QR Codes gratuitamente em poucos segundos.
+                </p>
+
+                <button onclick="abrirQR()">
+                    Usar ferramenta →
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="icone">◉</div>
+
+                <h2>Link para WhatsApp</h2>
+
+                <p>
+                    Crie um link do WhatsApp pronto para compartilhar.
+                </p>
+
+                <button onclick="abrirWhatsApp()">
+    Usar ferramenta →
+</button>
+            </div>
+
+            <div class="card">
+                <div class="icone">◆</div>
+
+                <h2>Comprimir imagem</h2>
+
+                <p>
+                    Reduza o tamanho das suas imagens rapidamente.
+                </p>
+
+                <button onclick="abrirCompressor()">
+    Usar ferramenta →
+</button>
+            </div>
+
+        </section>
+
+        <section id="qr-tool" class="qr-tool">
+
+            <div class="qr-box">
+
+                <button class="fechar" onclick="fecharQR()">×</button>
+
+                <h2>Gerador de QR Code</h2>
+
+                <p>
+                    Digite um link ou texto e gere seu QR Code.
+                </p>
+
+                <input
+                    type="text"
+                    id="qrTexto"
+                    placeholder="https://seusite.com"
+                >
+
+                <button onclick="gerarQR()">
+                    Gerar QR Code
+                </button>
+
+                <div id="qrcode"></div>
+
+                <button
+                    id="baixarQR"
+                    class="botao-download"
+                    onclick="baixarQR()"
+                >
+                    Baixar QR Code
+                </button>
+
+            </div>
+
+        </section>
+
+                <section id="whatsapp-tool" class="qr-tool">
+
+            <div class="qr-box">
+
+                <button class="fechar" onclick="fecharWhatsApp()">×</button>
+
+                <h2>Link para WhatsApp</h2>
+
+                <p>
+                    Crie um link direto para iniciar uma conversa no WhatsApp.
+                </p>
+
+                <input
+                    type="text"
+                    id="whatsappNumero"
+                    placeholder="Ex: 5511999999999"
+                >
+
+                <input
+                    type="text"
+                    id="whatsappMensagem"
+                    placeholder="Mensagem (opcional)"
+                >
+
+                <button onclick="gerarWhatsApp()">
+                    Gerar link
+                </button>
+
+                <div id="resultadoWhatsApp"></div>
+
+                <button
+                    id="copiarWhatsApp"
+                    class="botao-download"
+                    onclick="copiarWhatsApp()"
+                >
+                    Copiar link
+                </button>
+
+            </div>
+
+        </section>
+
+                <section id="compressor-tool" class="qr-tool">
+
+            <div class="qr-box">
+
+                <button class="fechar" onclick="fecharCompressor()">×</button>
+
+                <h2>Comprimir imagem</h2>
+
+                <p>
+                    Reduza o tamanho da sua imagem gratuitamente.
+                </p>
+
+                <input
+                    type="file"
+                    id="imagemInput"
+                    accept="image/*"
+                >
+
+                <div id="infoImagem"></div>
+
+                <button onclick="comprimirImagem()">
+                    Comprimir imagem
+                </button>
+
+                <div id="resultadoCompressor"></div>
+
+                <button
+                    id="baixarImagem"
+                    class="botao-download"
+                    onclick="baixarImagem()"
+                >
+                    Baixar imagem
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer id="sobre">
+        <p>© 2026 FerramentasJá — Ferramentas online gratuitas.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
