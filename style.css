@@ -576,3 +576,73 @@ footer {
 .levelup-button:hover {
     transform: translateY(-2px);
 }
+
+/* PROPAGANDA LEVEL UP NO TOPO */
+
+.levelup-topo {
+    max-width: 1050px;
+    margin: 0 auto 55px;
+    padding: 0 20px;
+}
+
+.levelup-topo-conteudo {
+    background: #151e2e;
+    border: 1px solid #26344d;
+    border-radius: 16px;
+    padding: 22px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.levelup-topo-tag {
+    display: inline-block;
+    background: #f5a900;
+    color: #111;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+}
+
+.levelup-topo h2 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    color: #fff;
+}
+
+.levelup-topo p {
+    margin: 0;
+    color: #aeb9cc;
+    font-size: 14px;
+}
+
+.levelup-topo a {
+    flex-shrink: 0;
+    background: #f5a900;
+    color: #111;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 13px 22px;
+    border-radius: 9px;
+    transition: 0.2s;
+}
+
+.levelup-topo a:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+@media (max-width: 700px) {
+    .levelup-topo-conteudo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .levelup-topo a {
+        width: 100%;
+        text-align: center;
+    }
+}
