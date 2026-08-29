@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF para Imagens Grátis | FerramentasJá</title>
-    <meta name="description" content="Transforme páginas de PDF em imagens gratuitamente.">
+    <title>Comprimir Imagem Grátis | FerramentasJá</title>
+    <meta name="description" content="Comprima imagens online gratuitamente e reduza o tamanho dos arquivos.">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body>
 <header>
@@ -21,21 +20,23 @@
     <section class="hero">
         <a href="index.html" class="btn home-link">← Voltar para Home</a>
         <p class="tag">⚡ 100% grátis</p>
-        <h1>PDF para Imagens</h1>
-        <p class="descricao">Transforme páginas de PDF em imagens gratuitamente.</p>
+        <h1>Comprimir Imagem</h1>
+        <p class="descricao">Reduza o tamanho da sua imagem rapidamente e gratuitamente.</p>
     </section>
 
     <section class="tool-page">
         <div class="tool-card">
-            <h2>Converter PDF</h2>
-            <p>Escolha um arquivo PDF para transformar suas páginas em imagens.</p>
+            <h2>Comprimir imagem</h2>
+            <p>Escolha uma imagem e reduza o tamanho do arquivo.</p>
 
-            <label for="pdfInput">Escolha um arquivo PDF</label>
-            <input type="file" id="pdfInput" accept="application/pdf">
+            <label for="imagemInput">Escolha uma imagem</label>
+            <input type="file" id="imagemInput" accept="image/*">
 
-            <button type="button" id="converterPDF">Converter PDF →</button>
+            <div id="resultadoCompressor"></div>
 
-            <div id="resultadoPDF" class="pdf-result"></div>
+            <button type="button" id="comprimirImagem">Comprimir imagem →</button>
+
+            <a id="baixarImagem" class="download" style="display:none;" href="#">Baixar imagem →</a>
         </div>
     </section>
 </main>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link para WhatsApp Grátis | FerramentasJá</title>
+    <meta name="description" content="Crie links diretos para WhatsApp gratuitamente, com mensagem opcional.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <a href="index.html" class="logo">Ferramentas<span>Já</span></a>
+    <nav>
+        <a href="index.html">Ferramentas</a>
+        <a href="sobre.html">Sobre</a>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <a href="index.html" class="btn home-link">← Voltar para Home</a>
+        <p class="tag">⚡ 100% grátis</p>
+        <h1>Link para WhatsApp</h1>
+        <p class="descricao">Crie um link direto para iniciar uma conversa no WhatsApp.</p>
+    </section>
+
+    <section class="tool-page">
+        <div class="tool-card">
+            <h2>Gerar link</h2>
+            <p>Informe o número com DDD e, se quiser, uma mensagem pronta.</p>
+
+            <div class="field">
+                <label for="whatsappNumero">Número do WhatsApp</label>
+                <input type="text" id="whatsappNumero" placeholder="Ex: 5511999999999">
+                <p class="info">Use o código do país + DDD + número, sem espaços ou símbolos.</p>
+            </div>
+
+            <div class="field">
+                <label for="whatsappMensagem">Mensagem (opcional)</label>
+                <input type="text" id="whatsappMensagem" placeholder="Olá! Gostaria de saber mais...">
+            </div>
+
+            <button type="button" id="gerarWhatsApp">Gerar link →</button>
+
+            <div id="resultadoWhatsApp"></div>
+            <button type="button" id="copiarWhatsApp" style="display:none;">Copiar link</button>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>© 2026 FerramentasJá — Ferramentas online gratuitas.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

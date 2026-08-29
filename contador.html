@@ -3,94 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Contador de Palavras e Caracteres Grátis | FerramentasJá</title>
-
-    <meta name="description" content="Conte palavras, caracteres e linhas online gratuitamente. Ferramenta rápida e simples.">
-
+    <meta name="description" content="Conte palavras, caracteres e linhas online gratuitamente.">
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
 <header>
-    <div class="logo">
-        <a href="index.html">Ferramentas<span>Já</span></a>
-    </div>
-
+    <a href="index.html" class="logo">Ferramentas<span>Já</span></a>
     <nav>
         <a href="index.html">Ferramentas</a>
-        <a href="index.html#sobre">Sobre</a>
+        <a href="sobre.html">Sobre</a>
     </nav>
 </header>
 
 <main>
-
     <section class="hero">
+        <a href="index.html" class="btn home-link">← Voltar para Home</a>
         <p class="tag">⚡ 100% grátis</p>
-
         <h1>Contador de Palavras</h1>
-
-        <p class="descricao">
-            Conte palavras, caracteres e linhas rapidamente.
-        </p>
+        <p class="descricao">Conte palavras, caracteres e linhas rapidamente.</p>
     </section>
 
-    <section class="whatsapp-page-tool">
-
-        <div class="qr-box">
-
+    <section class="tool-page">
+        <div class="tool-card">
             <h2>Digite seu texto</h2>
+            <p>Digite ou cole seu texto e veja a contagem em tempo real.</p>
 
-            <textarea
-                id="texto"
-                placeholder="Digite ou cole seu texto aqui..."
-                style="width:100%; min-height:220px; padding:15px; margin-top:15px; border:1px solid #303642; border-radius:9px; background:#0b0d12; color:white; font-size:16px; resize:vertical;"
-            ></textarea>
+            <label for="texto">Seu texto</label>
+            <textarea id="texto" placeholder="Digite ou cole seu texto aqui..."></textarea>
 
-            <div id="contagem" class="resultado-link" style="margin-top:20px;">
-                <p><strong>Palavras:</strong> 0</p>
-                <p><strong>Caracteres:</strong> 0</p>
-                <p><strong>Linhas:</strong> 0</p>
+            <div id="contagem" class="stats">
+                <div class="stat"><strong>0</strong><span>Palavras</span></div>
+                <div class="stat"><strong>0</strong><span>Caracteres</span></div>
+                <div class="stat"><strong>0</strong><span>Linhas</span></div>
             </div>
-
         </div>
-
     </section>
-
 </main>
 
 <footer>
     <p>© 2026 FerramentasJá — Ferramentas online gratuitas.</p>
 </footer>
 
-<script>
-
-const texto = document.getElementById("texto");
-const contagem = document.getElementById("contagem");
-
-texto.addEventListener("input", function () {
-
-    const valor = texto.value;
-
-    const palavras = valor.trim()
-        ? valor.trim().split(/\s+/).length
-        : 0;
-
-    const caracteres = valor.length;
-
-    const linhas = valor
-        ? valor.split(/\r\n|\r|\n/).length
-        : 0;
-
-    contagem.innerHTML = `
-        <p><strong>Palavras:</strong> ${palavras}</p>
-        <p><strong>Caracteres:</strong> ${caracteres}</p>
-        <p><strong>Linhas:</strong> ${linhas}</p>
-    `;
-});
-
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
