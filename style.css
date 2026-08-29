@@ -281,3 +281,63 @@ footer {
 #baixarImagem {
     display: none;
 }
+
+/* Página do Gerador de WhatsApp */
+
+.whatsapp-page-tool {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px 80px;
+}
+
+.whatsapp-page-tool .qr-box {
+    width: 100%;
+    max-width: 600px;
+    background: #11141a;
+    border: 1px solid #282d38;
+    border-radius: 16px;
+    padding: 30px;
+}
+
+.whatsapp-page-tool label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.whatsapp-page-tool input,
+.whatsapp-page-tool textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border: 1px solid #303642;
+    border-radius: 9px;
+    background: #0b0d12;
+    color: white;
+    font-size: 16px;
+}
+
+.whatsapp-page-tool textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.whatsapp-page-tool button {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.whatsapp-page-tool .resultado-link {
+    margin-top: 25px;
+}
+
+.whatsapp-page-tool .resultado-link input {
+    margin-top: 10px;
+}
+
+.whatsapp-page-tool .resultado-link a {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+}

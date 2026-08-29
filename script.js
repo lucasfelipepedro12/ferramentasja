@@ -233,3 +233,7 @@ function formatarTamanho(bytes) {
 
     return (bytes / (1024 * 1024)).toFixed(2) + " MB";
 }
+
+function abrirRedimensionador() {
+    window.location.href = "redimensionar-imagem.html";
+}
