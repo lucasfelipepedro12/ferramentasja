@@ -1,11 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url><loc>https://lucasfelipepedro12.github.io/ferramentasja/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-    <url><loc>https://lucasfelipepedro12.github.io/ferramentasja/gerador-qr.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://lucasfelipepedro12.github.io/ferramentasja/whatsapp.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://lucasfelipepedro12.github.io/ferramentasja/redimensionar-imagem.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://lucasfelipepedro12.github.io/ferramentasja/comprimir-imagem.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://lucasfelipepedro12.github.io/ferramentasja/pdf-imagem.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://lucasfelipepedro12.github.io/ferramentasja/contador.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://lucasfelipepedro12.github.io/ferramentasja/sobre.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <url>
+    <loc>https://lucasfelipepedro12.github.io/ferramentas/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://lucasfelipepedro12.github.io/ferramentas/gerador-qr.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lucasfelipepedro12.github.io/ferramentas/whatsapp.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lucasfelipepedro12.github.io/ferramentas/redimensionar-imagem.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lucasfelipepedro12.github.io/ferramentas/comprimir-imagem.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lucasfelipepedro12.github.io/ferramentas/pdf-imagem.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lucasfelipepedro12.github.io/ferramentas/contador.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://lucasfelipepedro12.github.io/ferramentas/sobre.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
