@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gerador de QR Code Grátis | FerramentasJá</title>
+
+    <meta name="description" content="Gere QR Codes gratuitamente de forma rápida e fácil com o FerramentasJá.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            Ferramentas<span>Já</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Ferramentas</a>
+            <a href="index.html#sobre">Sobre</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero">
+
+            <p class="tag">⚡ 100% grátis</p>
+
+            <h1>
+                Gerador de QR Code
+            </h1>
+
+            <p class="descricao">
+                Crie seu QR Code gratuitamente em poucos segundos.
+            </p>
+
+        </section>
+
+        <section class="qr-tool" style="display: flex;">
+
+            <div class="qr-box">
+
+                <h2>Gerar QR Code</h2>
+
+                <p>
+                    Digite um link ou texto abaixo.
+                </p>
+
+                <input
+                    type="text"
+                    id="qrTexto"
+                    placeholder="https://seusite.com"
+                >
+
+                <button onclick="gerarQR()">
+                    Gerar QR Code →
+                </button>
+
+                <div id="qrcode"></div>
+
+                <button
+                    id="baixarQR"
+                    class="botao-download"
+                    onclick="baixarQR()"
+                    style="display: none;"
+                >
+                    Baixar QR Code
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 FerramentasJá — Ferramentas online gratuitas.</p>
+    </footer>
+
+    <script>
+
+        function gerarQR() {
+
+            const texto = document
+                .getElementById("qrTexto")
+                .value
+                .trim();
+
+            const areaQR = document.getElementById("qrcode");
+
+            const botaoDownload =
+                document.getElementById("baixarQR");
+
+            if (texto === "") {
+
+                alert("Digite um texto ou link.");
+
+                return;
+            }
+
+            areaQR.innerHTML = "";
+
+            new QRCode(areaQR, {
+
+                text: texto,
+
+                width: 220,
+
+                height: 220,
+
+                colorDark: "#000000",
+
+                colorLight: "#ffffff",
+
+                correctLevel: QRCode.CorrectLevel.H
+
+            });
+
+            botaoDownload.style.display = "block";
+        }
+
+
+        function baixarQR() {
+
+            const imagem =
+                document.querySelector("#qrcode img");
+
+            if (!imagem) {
+
+                alert("Primeiro gere um QR Code.");
+
+                return;
+            }
+
+            const link =
+                document.createElement("a");
+
+            link.href = imagem.src;
+
+            link.download =
+                "qrcode-ferramentasja.png";
+
+            link.click();
+        }
+
+    </script>
+
+</body>
+
+</html>
