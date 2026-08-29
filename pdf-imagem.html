@@ -3,49 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>PDF para Imagens Grátis | FerramentasJá</title>
+
     <meta name="description" content="Transforme páginas de PDF em imagens gratuitamente.">
+
     <link rel="stylesheet" href="style.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
+
 <body>
+
 <header>
-    <a href="index.html" class="logo">Ferramentas<span>Já</span></a>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html">Ferramentas</a>
-        <a href="sobre.html">Sobre</a>
-    </nav>
+    <div class="header-container">
+
+        <a href="index.html" class="logo">
+            Ferramentas<span>Já</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="index.html#ferramentas">Ferramentas</a>
+            <a href="sobre.html">Sobre</a>
+        </nav>
+
+    </div>
 </header>
 
+
 <main>
-    <div class="home-top-wrap"><a href="index.html" class="home-top">← Home</a></div>
+
     <section class="hero">
-        <a href="index.html" class="btn home-link">← Voltar para Home</a>
+
         <p class="tag">⚡ 100% grátis</p>
+
         <h1>PDF para Imagens</h1>
-        <p class="descricao">Transforme páginas de PDF em imagens gratuitamente.</p>
+
+        <p class="descricao">
+            Transforme páginas de PDF em imagens gratuitamente.
+        </p>
+
     </section>
+
 
     <section class="tool-page">
+
         <div class="tool-card">
+
             <h2>Converter PDF</h2>
-            <p>Escolha um arquivo PDF para transformar suas páginas em imagens.</p>
 
-            <label for="pdfInput">Escolha um arquivo PDF</label>
-            <input type="file" id="pdfInput" accept="application/pdf">
+            <p>
+                Escolha um arquivo PDF para transformar
+                suas páginas em imagens.
+            </p>
 
-            <button type="button" id="converterPDF">Converter PDF →</button>
 
-            <div id="resultadoPDF" class="pdf-result"></div>
+            <div class="field">
+
+                <label for="pdfInput">
+                    Escolha um arquivo PDF
+                </label>
+
+                <input
+                    type="file"
+                    id="pdfInput"
+                    accept="application/pdf"
+                >
+
+            </div>
+
+
+            <button
+                type="button"
+                id="converterPDF"
+            >
+                Converter PDF →
+            </button>
+
+
+            <div
+                id="resultadoPDF"
+                class="pdf-result"
+            ></div>
+
         </div>
+
     </section>
+
+
+    <div class="back-home">
+        <a href="index.html">← Voltar para Início</a>
+    </div>
+
 </main>
 
+
 <footer>
-    <p>© 2026 FerramentasJá — Ferramentas online gratuitas.</p>
+    <p>
+        © 2026 FerramentasJá — Ferramentas online gratuitas.
+    </p>
 </footer>
 
+
 <script src="script.js"></script>
+
 </body>
 </html>

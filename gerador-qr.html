@@ -3,51 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Gerador de QR Code Grátis | FerramentasJá</title>
+
     <meta name="description" content="Gere QR Codes gratuitamente de forma rápida e fácil com o FerramentasJá.">
+
     <link rel="stylesheet" href="style.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
+
 <body>
+
 <header>
-    <a href="index.html" class="logo">Ferramentas<span>Já</span></a>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html">Ferramentas</a>
-        <a href="sobre.html">Sobre</a>
-    </nav>
+    <div class="header-container">
+
+        <a href="index.html" class="logo">
+            Ferramentas<span>Já</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="index.html#ferramentas">Ferramentas</a>
+            <a href="sobre.html">Sobre</a>
+        </nav>
+
+    </div>
 </header>
 
+
 <main>
-    <div class="home-top-wrap"><a href="index.html" class="home-top">← Home</a></div>
+
     <section class="hero">
-        <a href="index.html" class="btn home-link">← Voltar para Home</a>
+
         <p class="tag">⚡ 100% grátis</p>
+
         <h1>Gerador de QR Code</h1>
-        <p class="descricao">Crie seu QR Code gratuitamente em poucos segundos.</p>
+
+        <p class="descricao">
+            Crie seu QR Code gratuitamente em poucos segundos.
+        </p>
+
     </section>
 
+
     <section class="tool-page">
+
         <div class="tool-card">
+
             <h2>Gerar QR Code</h2>
-            <p>Digite um link ou texto abaixo.</p>
 
-            <label for="qrTexto">Texto ou link</label>
-            <input type="text" id="qrTexto" placeholder="https://seusite.com">
+            <p>
+                Digite um link ou texto abaixo.
+            </p>
 
-            <button type="button" id="gerarQR">Gerar QR Code →</button>
+            <label for="qrTexto">
+                Texto ou link
+            </label>
+
+            <input
+                type="text"
+                id="qrTexto"
+                placeholder="https://seusite.com"
+            >
+
+            <button type="button" id="gerarQR">
+                Gerar QR Code →
+            </button>
 
             <div id="qrcode"></div>
 
-            <a id="baixarQR" class="download" style="display:none;" href="#">Baixar QR Code →</a>
+            <a
+                id="baixarQR"
+                class="download"
+                style="display:none;"
+                href="#"
+            >
+                Baixar QR Code →
+            </a>
+
         </div>
+
     </section>
+
+
+    <div class="back-home">
+        <a href="index.html">← Voltar para Início</a>
+    </div>
+
 </main>
 
+
 <footer>
-    <p>© 2026 FerramentasJá — Ferramentas online gratuitas.</p>
+    <p>
+        © 2026 FerramentasJá — Ferramentas online gratuitas.
+    </p>
 </footer>
 
+
 <script src="script.js"></script>
+
 </body>
 </html>

@@ -3,50 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Contador de Palavras e Caracteres Grátis | FerramentasJá</title>
+
     <meta name="description" content="Conte palavras, caracteres e linhas online gratuitamente.">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <header>
-    <a href="index.html" class="logo">Ferramentas<span>Já</span></a>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html">Ferramentas</a>
-        <a href="sobre.html">Sobre</a>
-    </nav>
+    <div class="header-container">
+
+        <a href="index.html" class="logo">
+            Ferramentas<span>Já</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="index.html#ferramentas">Ferramentas</a>
+            <a href="sobre.html">Sobre</a>
+        </nav>
+
+    </div>
 </header>
 
+
 <main>
-    <div class="home-top-wrap"><a href="index.html" class="home-top">← Home</a></div>
+
     <section class="hero">
-        <a href="index.html" class="btn home-link">← Voltar para Home</a>
+
         <p class="tag">⚡ 100% grátis</p>
+
         <h1>Contador de Palavras</h1>
-        <p class="descricao">Conte palavras, caracteres e linhas rapidamente.</p>
+
+        <p class="descricao">
+            Conte palavras, caracteres e linhas rapidamente.
+        </p>
+
     </section>
+
 
     <section class="tool-page">
-        <div class="tool-card">
-            <h2>Digite seu texto</h2>
-            <p>Digite ou cole seu texto e veja a contagem em tempo real.</p>
 
-            <label for="texto">Seu texto</label>
-            <textarea id="texto" placeholder="Digite ou cole seu texto aqui..."></textarea>
+        <div class="tool-card">
+
+            <h2>Digite seu texto</h2>
+
+            <p>
+                Digite ou cole seu texto e veja a contagem em tempo real.
+            </p>
+
+
+            <div class="field">
+
+                <label for="texto">
+                    Seu texto
+                </label>
+
+                <textarea
+                    id="texto"
+                    placeholder="Digite ou cole seu texto aqui..."
+                ></textarea>
+
+            </div>
+
 
             <div id="contagem" class="stats">
-                <div class="stat"><strong>0</strong><span>Palavras</span></div>
-                <div class="stat"><strong>0</strong><span>Caracteres</span></div>
-                <div class="stat"><strong>0</strong><span>Linhas</span></div>
+
+                <div class="stat">
+                    <strong>0</strong>
+                    <span>Palavras</span>
+                </div>
+
+                <div class="stat">
+                    <strong>0</strong>
+                    <span>Caracteres</span>
+                </div>
+
+                <div class="stat">
+                    <strong>0</strong>
+                    <span>Linhas</span>
+                </div>
+
             </div>
+
         </div>
+
     </section>
+
+
+    <div class="back-home">
+        <a href="index.html">← Voltar para Início</a>
+    </div>
+
 </main>
 
+
 <footer>
-    <p>© 2026 FerramentasJá — Ferramentas online gratuitas.</p>
+    <p>
+        © 2026 FerramentasJá — Ferramentas online gratuitas.
+    </p>
 </footer>
 
+
 <script src="script.js"></script>
+
 </body>
 </html>

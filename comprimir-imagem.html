@@ -3,50 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Comprimir Imagem Grátis | FerramentasJá</title>
+
     <meta name="description" content="Comprima imagens online gratuitamente e reduza o tamanho dos arquivos.">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <header>
-    <a href="index.html" class="logo">Ferramentas<span>Já</span></a>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html">Ferramentas</a>
-        <a href="sobre.html">Sobre</a>
-    </nav>
+    <div class="header-container">
+
+        <a href="index.html" class="logo">
+            Ferramentas<span>Já</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="index.html#ferramentas">Ferramentas</a>
+            <a href="sobre.html">Sobre</a>
+        </nav>
+
+    </div>
 </header>
 
+
 <main>
-    <div class="home-top-wrap"><a href="index.html" class="home-top">← Home</a></div>
+
     <section class="hero">
-        <a href="index.html" class="btn home-link">← Voltar para Home</a>
+
         <p class="tag">⚡ 100% grátis</p>
+
         <h1>Comprimir Imagem</h1>
-        <p class="descricao">Reduza o tamanho da sua imagem rapidamente e gratuitamente.</p>
+
+        <p class="descricao">
+            Reduza o tamanho da sua imagem rapidamente
+            e gratuitamente.
+        </p>
+
     </section>
 
-    <section class="tool-page">
-        <div class="tool-card">
-            <h2>Comprimir imagem</h2>
-            <p>Escolha uma imagem e reduza o tamanho do arquivo.</p>
 
-            <label for="imagemInput">Escolha uma imagem</label>
-            <input type="file" id="imagemInput" accept="image/*">
+    <section class="tool-page">
+
+        <div class="tool-card">
+
+            <h2>Comprimir imagem</h2>
+
+            <p>
+                Escolha uma imagem e reduza o tamanho do arquivo.
+            </p>
+
+
+            <div class="field">
+
+                <label for="imagemInput">
+                    Escolha uma imagem
+                </label>
+
+                <input
+                    type="file"
+                    id="imagemInput"
+                    accept="image/*"
+                >
+
+            </div>
+
 
             <div id="resultadoCompressor"></div>
 
-            <button type="button" id="comprimirImagem">Comprimir imagem →</button>
 
-            <a id="baixarImagem" class="download" style="display:none;" href="#">Baixar imagem →</a>
+            <button
+                type="button"
+                id="comprimirImagem"
+            >
+                Comprimir imagem →
+            </button>
+
+
+            <a
+                id="baixarImagem"
+                class="download"
+                style="display:none;"
+                href="#"
+            >
+                Baixar imagem →
+            </a>
+
         </div>
+
     </section>
+
+
+    <div class="back-home">
+        <a href="index.html">← Voltar para Início</a>
+    </div>
+
 </main>
 
+
 <footer>
-    <p>© 2026 FerramentasJá — Ferramentas online gratuitas.</p>
+    <p>
+        © 2026 FerramentasJá — Ferramentas online gratuitas.
+    </p>
 </footer>
 
+
 <script src="script.js"></script>
+
 </body>
 </html>
