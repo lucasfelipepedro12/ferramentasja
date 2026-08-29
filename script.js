@@ -1,3 +1,5 @@
+alert("ESTE É O SCRIPT NOVO");
+
 function abrirQR() {
     document.getElementById("qr-tool").style.display = "flex";
     document.getElementById("qrTexto").focus();
@@ -18,16 +20,18 @@ function gerarQR() {
         return;
     }
 
-    areaQR.innerHTML = "";
+    const url =
+        "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" +
+        encodeURIComponent(texto);
 
-    new QRCode(areaQR, {
-        text: texto,
-        width: 220,
-        height: 220,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
-    });
+    areaQR.innerHTML = `
+        <img
+            src="${url}"
+            alt="QR Code"
+            width="220"
+            height="220"
+        >
+    `;
 
     botaoDownload.style.display = "block";
 }
@@ -44,6 +48,7 @@ function baixarQR() {
     const link = document.createElement("a");
 
     link.href = imagem.src;
+    link.target = "_blank";
     link.download = "qrcode-ferramentasja.png";
 
     link.click();

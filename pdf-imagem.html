@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PDF para Imagens Grátis | FerramentasJá</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Ferramentas<span>Já</span></div>
+
+    <nav>
+        <a href="index.html">Ferramentas</a>
+        <a href="index.html#sobre">Sobre</a>
+    </nav>
+</header>
+
+<main>
+
+    <section class="hero">
+        <p class="tag">⚡ 100% grátis</p>
+
+        <h1>PDF para imagens</h1>
+
+        <p class="descricao">
+            Transforme páginas de PDF em imagens gratuitamente.
+        </p>
+    </section>
+
+    <section class="qr-tool" style="display: flex; position: relative; background: transparent;">
+
+        <div class="qr-box">
+
+            <h2>Converter PDF</h2>
+
+            <p>
+                Escolha um arquivo PDF.
+            </p>
+
+            <input
+                type="file"
+                id="pdfInput"
+                accept="application/pdf"
+            >
+
+            <button onclick="converterPDF()">
+                Converter PDF →
+            </button>
+
+            <div id="resultadoPDF"></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2026 FerramentasJá — Ferramentas online gratuitas.</p>
+</footer>
+
+<script>
+
+async function converterPDF() {
+
+    const input = document.getElementById("pdfInput");
+    const resultado = document.getElementById("resultadoPDF");
+
+    if (!input.files[0]) {
+        alert("Escolha um PDF primeiro.");
+        return;
+    }
+
+    resultado.innerHTML = "<p>Convertendo...</p>";
+
+    const arquivo = input.files[0];
+    const dados = await arquivo.arrayBuffer();
+
+    const pdf = await pdfjsLib.getDocument({
+        data: dados
+    }).promise;
+
+    resultado.innerHTML = "";
+
+    for (let numero = 1; numero <= pdf.numPages; numero++) {
+
+        const pagina = await pdf.getPage(numero);
+
+        const viewport = pagina.getViewport({
+            scale: 1.5
+        });
+
+        const canvas = document.createElement("canvas");
+        const contexto = canvas.getContext("2d");
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        await pagina.render({
+            canvasContext: contexto,
+            viewport: viewport
+        }).promise;
+
+        const imagem = document.createElement("img");
+
+        imagem.src = canvas.toDataURL("image/jpeg", 0.9);
+        imagem.style.width = "100%";
+        imagem.style.marginTop = "20px";
+        imagem.style.borderRadius = "10px";
+
+        resultado.appendChild(imagem);
+    }
+}
+
+</script>
+
+</body>
+</html>
