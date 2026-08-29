@@ -521,3 +521,58 @@ footer {
 .footer-links a:hover {
     color: var(--blue);
 }
+
+.levelup-section {
+    width: 100%;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+
+.levelup-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    text-align: center;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #111827, #1f2937);
+    color: white;
+    box-shadow: 0 15px 40px rgba(0,0,0,.15);
+}
+
+.levelup-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    margin-bottom: 15px;
+    border-radius: 20px;
+    background: #f59e0b;
+    color: #111;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.levelup-card h2 {
+    margin: 10px 0;
+    font-size: 30px;
+}
+
+.levelup-card p {
+    max-width: 650px;
+    margin: 15px auto 25px;
+    line-height: 1.6;
+    color: #d1d5db;
+}
+
+.levelup-button {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 10px;
+    background: #f59e0b;
+    color: #111;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.levelup-button:hover {
+    transform: translateY(-2px);
+}
