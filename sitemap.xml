@@ -2,51 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://lucasfelipepedro12.github.io/ferramentas/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://lucasfelipepedro12.github.io/</loc>
   </url>
 
   <url>
-    <loc>https://lucasfelipepedro12.github.io/ferramentas/gerador-qr.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://lucasfelipepedro12.github.io/gerador-qr.html</loc>
   </url>
 
   <url>
-    <loc>https://lucasfelipepedro12.github.io/ferramentas/whatsapp.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://lucasfelipepedro12.github.io/whatsapp.html</loc>
   </url>
 
   <url>
-    <loc>https://lucasfelipepedro12.github.io/ferramentas/redimensionar-imagem.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://lucasfelipepedro12.github.io/redimensionar-imagem.html</loc>
   </url>
 
   <url>
-    <loc>https://lucasfelipepedro12.github.io/ferramentas/comprimir-imagem.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://lucasfelipepedro12.github.io/comprimir-imagem.html</loc>
   </url>
 
   <url>
-    <loc>https://lucasfelipepedro12.github.io/ferramentas/pdf-imagem.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://lucasfelipepedro12.github.io/pdf-imagem.html</loc>
   </url>
 
   <url>
-    <loc>https://lucasfelipepedro12.github.io/ferramentas/contador.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://lucasfelipepedro12.github.io/contador.html</loc>
   </url>
 
   <url>
-    <loc>https://lucasfelipepedro12.github.io/ferramentas/sobre.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://lucasfelipepedro12.github.io/sobre.html</loc>
   </url>
 
 </urlset>
