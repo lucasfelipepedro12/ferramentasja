@@ -646,3 +646,105 @@ footer {
         text-align: center;
     }
 }
+
+/* =========================
+   FERRAMENTAS PRO
+========================= */
+
+.pro-tools {
+    max-width: 1050px;
+    margin: 80px auto;
+    padding: 0 20px;
+}
+
+.pro-tools-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.pro-tools-header span {
+    display: inline-block;
+    background: #f5a900;
+    color: #111;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.pro-tools-header h2 {
+    font-size: 32px;
+    margin: 5px 0 10px;
+}
+
+.pro-tools-header p {
+    color: #999;
+}
+
+.pro-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.pro-tool-card {
+    position: relative;
+    background: #11151d;
+    border: 1px solid #f5a900;
+    border-radius: 18px;
+    padding: 30px;
+    text-align: left;
+}
+
+.pro-tool-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.pro-badge {
+    display: inline-block;
+    background: #f5a900;
+    color: #111;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.pro-tool-card h2 {
+    margin: 15px 0 10px;
+    font-size: 22px;
+}
+
+.pro-tool-card p {
+    color: #999;
+    line-height: 1.6;
+    min-height: 75px;
+}
+
+.pro-tool-button {
+    display: block;
+    margin-top: 20px;
+    padding: 13px;
+    background: #f5a900;
+    color: #111;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 9px;
+    font-weight: bold;
+}
+
+.pro-tool-button:hover {
+    opacity: 0.9;
+}
+
+@media (max-width: 700px) {
+    .pro-tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pro-tools-header h2 {
+        font-size: 26px;
+    }
+}

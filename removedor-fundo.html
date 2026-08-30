@@ -49,7 +49,7 @@
         .upload-area {
             border: 2px dashed #ccc;
             border-radius: 15px;
-            padding: 45px 20px;
+            padding: 40px 20px;
             margin-top: 30px;
         }
 
@@ -57,23 +57,41 @@
             margin-top: 20px;
         }
 
-        .premium-box {
-            margin-top: 30px;
-            padding: 25px;
-            background: #f7f7f7;
-            border-radius: 15px;
-        }
-
-        .premium-box h2 {
-            margin-top: 0;
-        }
-
-        .premium-button {
+        .remover-button {
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 20px;
             padding: 14px 25px;
-            background: #f5a900;
-            color: #111;
+            background: #4d8dff;
+            color: white;
+            border: 0;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .remover-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #resultado {
+            max-width: 100%;
+            margin-top: 25px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        #baixar {
+            display: none;
+            margin-top: 15px;
+            padding: 12px 22px;
+            background: #20a05a;
+            color: white;
             text-decoration: none;
             border-radius: 10px;
             font-weight: bold;
@@ -84,16 +102,6 @@
             margin-top: 25px;
             color: #555;
             text-decoration: none;
-        }
-
-        @media (max-width: 600px) {
-            .pro-box {
-                padding: 25px 18px;
-            }
-
-            .pro-box h1 {
-                font-size: 26px;
-            }
         }
     </style>
 </head>
@@ -124,16 +132,14 @@
         <h1>Removedor de Fundo</h1>
 
         <p>
-            Remova o fundo das suas imagens de forma rápida e fácil.
+            Remova o fundo das suas imagens automaticamente.
         </p>
 
         <div class="upload-area">
 
             <h2>Escolha sua imagem</h2>
 
-            <p>
-                PNG, JPG ou JPEG
-            </p>
+            <p>PNG, JPG ou JPEG</p>
 
             <input
                 type="file"
@@ -141,26 +147,24 @@
                 accept="image/png,image/jpeg"
             >
 
-        </div>
+            <br>
 
-        <div class="premium-box">
-
-            <h2>🔒 Desbloqueie o Removedor de Fundo PRO</h2>
-
-            <p>
-                Remova fundos automaticamente e deixe suas imagens
-                prontas para usar.
-            </p>
-
-            <p>
-                <strong>Versão Premium</strong>
-            </p>
-
-            <a
-                class="premium-button"
-                href="#"
+            <button
+                id="remover"
+                class="remover-button"
+                disabled
             >
-                DESBLOQUEAR PRO →
+                REMOVER FUNDO
+            </button>
+
+            <div id="status"></div>
+
+            <img id="resultado">
+
+            <br>
+
+            <a id="baixar" download="imagem-sem-fundo.png">
+                BAIXAR IMAGEM →
             </a>
 
         </div>
@@ -182,6 +186,65 @@
         <a href="termos.html">Termos de Uso</a>
     </div>
 </footer>
+
+<script type="module">
+    import { removeBackground } from "https://cdn.jsdelivr.net/npm/@imgly/background-removal/+esm";
+
+    const input = document.getElementById("imagem");
+    const botao = document.getElementById("remover");
+    const status = document.getElementById("status");
+    const resultado = document.getElementById("resultado");
+    const baixar = document.getElementById("baixar");
+
+    let arquivoSelecionado = null;
+
+    input.addEventListener("change", function () {
+
+        arquivoSelecionado = input.files[0];
+
+        if (arquivoSelecionado) {
+            botao.disabled = false;
+            status.textContent = "Imagem selecionada. Clique em remover fundo.";
+            resultado.style.display = "none";
+            baixar.style.display = "none";
+        }
+    });
+
+    botao.addEventListener("click", async function () {
+
+        if (!arquivoSelecionado) return;
+
+        botao.disabled = true;
+        status.textContent = "⏳ Removendo o fundo... aguarde.";
+
+        try {
+
+            const blob = await removeBackground(arquivoSelecionado);
+
+            const url = URL.createObjectURL(blob);
+
+            resultado.src = url;
+            resultado.style.display = "block";
+
+            baixar.href = url;
+            baixar.style.display = "inline-block";
+
+            status.textContent = "✅ Fundo removido com sucesso!";
+
+        } catch (erro) {
+
+            console.error(erro);
+
+            status.textContent =
+                "❌ Não foi possível remover o fundo. Tente outra imagem.";
+
+        } finally {
+
+            botao.disabled = false;
+
+        }
+    });
+</script>
 
 </body>
 </html>
