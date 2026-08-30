@@ -309,6 +309,55 @@ body {
     text-decoration: none;
 }
 
+
+.form-intro {
+    background: #fff8e8;
+    border-left: 4px solid #f5a900;
+    padding: 13px 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+.form-intro strong {
+    display: block;
+    color: #222;
+    margin-bottom: 3px;
+}
+.form-intro span,
+.campo small {
+    color: #777;
+    font-size: 12px;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 18px;
+}
+.experience-box {
+    padding: 18px;
+    margin-top: 18px;
+    border: 1px solid #e7e7e7;
+    border-radius: 12px;
+    background: #fafafa;
+}
+.experience-box .campo {
+    margin-top: 12px;
+}
+.campo small {
+    display: block;
+    margin-top: 6px;
+}
+.cv-side-section .linkedin {
+    overflow-wrap: anywhere;
+}
+.cv-empty {
+    display: none;
+}
+@media (max-width: 650px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ===== MOBILE ===== */
 
 @media (max-width: 750px) {
@@ -346,130 +395,126 @@ body {
     }
 }
 
-/* ===== IMPRESSÃO ===== */
-
+/* ===== IMPRESSÃO / PDF ===== */
 @media print {
-
     @page {
-        size: A4;
+        size: A4 portrait;
         margin: 0;
     }
 
-    body {
-        background: white;
+    html, body {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        background: #fff !important;
     }
 
-    body * {
-        visibility: hidden;
-    }
-
-    .curriculo,
-    .curriculo * {
-        visibility: visible;
-    }
-
-    .curriculo {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 210mm;
-        min-height: 297mm;
-        box-shadow: none;
-    }
-
-    .download-area,
-    .voltar {
-        display: none !important;
-    }
-}
-
-/* =========================
-   IMPRESSÃO DO CURRÍCULO
-   ========================= */
-
-@media print {
-
-    @page {
-        size: A4;
-        margin: 0;
-    }
-
-    html,
-    body {
-        width: 210mm;
-        margin: 0;
-        padding: 0;
-        background: white !important;
-    }
-
-    /* Esconde tudo que não pertence ao currículo */
-    header,
-    footer,
-    .cv-header,
-    .cv-form,
-    .voltar,
-    .download-button {
+    header, footer, .cv-header, .cv-form, .download-area, .voltar {
         display: none !important;
     }
 
-    main.cv-container {
-        width: 210mm;
-        max-width: none;
-        margin: 0;
-        padding: 0;
+    .cv-container {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     .resultado-cv {
         display: block !important;
+        width: 100% !important;
         margin: 0 !important;
         padding: 0 !important;
     }
 
     .curriculo {
-        width: 210mm;
-        min-height: 297mm;
-        box-sizing: border-box;
-
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        width: 210mm !important;
+        min-height: 297mm !important;
         margin: 0 !important;
-        padding: 18mm 18mm !important;
-
+        padding: 0 !important;
+        display: grid !important;
+        grid-template-columns: 32% 68% !important;
         box-shadow: none !important;
         border-radius: 0 !important;
+        background: #fff !important;
+        overflow: hidden !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
 
-        background: white !important;
+    .cv-lateral {
+        padding: 17mm 10mm !important;
+        min-height: 297mm !important;
+    }
 
-        page-break-after: avoid;
+    .cv-principal {
+        padding: 17mm 13mm !important;
+        min-width: 0 !important;
+    }
+
+    .cv-nome {
+        font-size: 25px !important;
+    }
+
+    .cv-cargo {
+        font-size: 10px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .cv-side-section {
+        margin-top: 20px !important;
+    }
+
+    .cv-side-section h3 {
+        font-size: 9px !important;
+        margin-bottom: 7px !important;
+    }
+
+    .cv-side-section p,
+    .cv-side-section li {
+        font-size: 9px !important;
+        line-height: 1.45 !important;
+    }
+
+    .cv-section {
+        margin-bottom: 16px !important;
+        break-inside: avoid;
         page-break-inside: avoid;
     }
 
-    .curriculo h1 {
-        font-size: 28px;
-        margin-top: 0;
+    .cv-section-title {
+        font-size: 11px !important;
+        margin-bottom: 9px !important;
+        letter-spacing: .8px !important;
     }
 
-    .curriculo h3 {
-        font-size: 12px;
-        margin-top: 20px;
-        margin-bottom: 8px;
-
-        page-break-after: avoid;
+    .cv-profile,
+    .experiencia-texto {
+        font-size: 9.5px !important;
+        line-height: 1.5 !important;
     }
 
-    .curriculo p {
-        font-size: 11px;
-        line-height: 1.45;
-
+    .experiencia-item {
+        margin-bottom: 14px !important;
+        break-inside: avoid;
         page-break-inside: avoid;
     }
 
-    .curriculo .contato {
-        font-size: 10px;
-        margin-bottom: 18px;
+    .experiencia-cargo {
+        font-size: 11px !important;
     }
 
-    /* Evita quebrar blocos no meio */
-    .curriculo > * {
-        page-break-inside: avoid;
+    .experiencia-data,
+    .experiencia-empresa {
+        font-size: 9px !important;
+    }
+
+    .competencia {
+        font-size: 8.5px !important;
+        padding: 5px 8px !important;
     }
 }
 </style>
@@ -506,95 +551,131 @@ body {
 
 </div>
 
+
 <div class="cv-form">
+
+    <div class="form-intro">
+        <strong>Preencha com informações reais e objetivas.</strong>
+        <span>Use frases curtas e destaque resultados sempre que possível.</span>
+    </div>
 
     <h2>👤 Dados pessoais</h2>
 
-    <div class="campo">
-        <label>Nome completo</label>
-        <input id="nome" placeholder="Ex.: João da Silva">
-    </div>
+    <div class="form-grid">
+        <div class="campo">
+            <label>Nome completo *</label>
+            <input id="nome" placeholder="Ex.: João da Silva">
+        </div>
 
-    <div class="campo">
-        <label>Cargo desejado</label>
-        <input id="cargo" placeholder="Ex.: Analista Administrativo">
-    </div>
+        <div class="campo">
+            <label>Cargo desejado *</label>
+            <input id="cargo" placeholder="Ex.: Analista Administrativo">
+        </div>
 
-    <div class="campo">
-        <label>E-mail</label>
-        <input id="email" placeholder="seu@email.com">
-    </div>
+        <div class="campo">
+            <label>E-mail *</label>
+            <input id="email" type="email" placeholder="seu@email.com">
+        </div>
 
-    <div class="campo">
-        <label>Telefone</label>
-        <input id="telefone" placeholder="(11) 99999-9999">
-    </div>
+        <div class="campo">
+            <label>Telefone</label>
+            <input id="telefone" placeholder="(11) 99999-9999">
+        </div>
 
-    <div class="campo">
-        <label>Cidade / Estado</label>
-        <input id="cidade" placeholder="São Paulo - SP">
+        <div class="campo">
+            <label>Cidade / Estado</label>
+            <input id="cidade" placeholder="São Paulo - SP">
+        </div>
+
+        <div class="campo">
+            <label>LinkedIn</label>
+            <input id="linkedin" placeholder="linkedin.com/in/seunome">
+        </div>
     </div>
 
     <h2>🎯 Perfil profissional</h2>
-
     <div class="campo">
-        <textarea id="perfil"
-        placeholder="Fale brevemente sobre sua experiência, seus pontos fortes e o tipo de profissional que você é."></textarea>
+        <label>Apresente seu perfil em 3 a 5 linhas</label>
+        <textarea id="perfil" placeholder="Ex.: Profissional com 4 anos de experiência na área administrativa, com foco em organização de processos, atendimento e controle de documentos. Perfil proativo, organizado e orientado a resultados."></textarea>
+        <small>Evite frases genéricas. Diga sua área, experiência e principais pontos fortes.</small>
     </div>
 
     <h2>💼 Experiência profissional</h2>
 
-    <div class="campo">
-        <label>Cargo</label>
-        <input id="expCargo" placeholder="Ex.: Assistente Administrativo">
+    <div class="experience-box">
+        <div class="form-grid">
+            <div class="campo">
+                <label>Cargo</label>
+                <input id="expCargo" placeholder="Ex.: Assistente Administrativo">
+            </div>
+            <div class="campo">
+                <label>Empresa</label>
+                <input id="empresa" placeholder="Ex.: Empresa ABC">
+            </div>
+            <div class="campo">
+                <label>Período</label>
+                <input id="periodo" placeholder="2022 - 2025">
+            </div>
+        </div>
+        <div class="campo">
+            <label>Atividades e resultados</label>
+            <textarea id="experiencia" placeholder="Ex.: Atendimento a clientes, organização de documentos e controle de planilhas. Reduzi atrasos no processo de conferência e mantive os arquivos atualizados."></textarea>
+        </div>
     </div>
 
-    <div class="campo">
-        <label>Empresa</label>
-        <input id="empresa" placeholder="Ex.: Empresa ABC">
+    <div class="experience-box">
+        <div class="form-grid">
+            <div class="campo">
+                <label>Cargo anterior</label>
+                <input id="expCargo2" placeholder="Ex.: Auxiliar Administrativo">
+            </div>
+            <div class="campo">
+                <label>Empresa anterior</label>
+                <input id="empresa2" placeholder="Ex.: Empresa XYZ">
+            </div>
+            <div class="campo">
+                <label>Período</label>
+                <input id="periodo2" placeholder="2020 - 2022">
+            </div>
+        </div>
+        <div class="campo">
+            <label>Atividades e resultados</label>
+            <textarea id="experiencia2" placeholder="Descreva as principais atividades e algum resultado alcançado."></textarea>
+        </div>
     </div>
 
-    <div class="campo">
-        <label>Período</label>
-        <input id="periodo" placeholder="2022 - 2025">
-    </div>
+    <h2>🎓 Formação acadêmica</h2>
 
-    <div class="campo">
-        <label>Principais atividades e resultados</label>
-        <textarea id="experiencia"
-        placeholder="Descreva suas principais responsabilidades e resultados."></textarea>
-    </div>
-
-    <h2>🎓 Formação</h2>
-
-    <div class="campo">
-        <label>Curso / Formação</label>
-        <input id="formacao" placeholder="Ex.: Administração">
-    </div>
-
-    <div class="campo">
-        <label>Instituição</label>
-        <input id="instituicao" placeholder="Ex.: Universidade XYZ">
+    <div class="form-grid">
+        <div class="campo">
+            <label>Curso / Formação</label>
+            <input id="formacao" placeholder="Ex.: Administração">
+        </div>
+        <div class="campo">
+            <label>Instituição</label>
+            <input id="instituicao" placeholder="Ex.: Universidade XYZ">
+        </div>
+        <div class="campo">
+            <label>Período</label>
+            <input id="periodoFormacao" placeholder="2021 - 2025">
+        </div>
     </div>
 
     <h2>⭐ Competências</h2>
-
     <div class="campo">
-        <textarea id="habilidades"
-        placeholder="Ex.: Excel, Comunicação, Liderança, Organização, Atendimento ao cliente"></textarea>
+        <label>Separe por vírgulas</label>
+        <textarea id="habilidades" placeholder="Ex.: Excel, Comunicação, Organização, Liderança, Atendimento ao cliente"></textarea>
+        <small>Escolha competências que realmente tenham relação com a vaga.</small>
     </div>
 
     <h2>🌎 Idiomas</h2>
-
     <div class="campo">
         <input id="idiomas" placeholder="Ex.: Inglês intermediário, Espanhol básico">
     </div>
 
-    <h2>📚 Cursos complementares</h2>
-
+    <h2>📚 Cursos e certificações</h2>
     <div class="campo">
-        <textarea id="cursos"
-        placeholder="Ex.: Excel Avançado - 2025&#10;Marketing Digital - 2024"></textarea>
+        <textarea id="cursos" placeholder="Ex.: Excel Avançado — 2025&#10;Power BI — 2024&#10;Atendimento ao Cliente — 2024"></textarea>
     </div>
 
     <button class="gerar-button" onclick="gerarCurriculo()">
@@ -602,6 +683,7 @@ body {
     </button>
 
 </div>
+
 
 
 <div class="resultado-cv" id="resultado">
@@ -623,6 +705,7 @@ body {
             <p id="cvEmail"></p>
             <p id="cvTelefone"></p>
             <p id="cvCidade"></p>
+            <p id="cvLinkedin" class="linkedin"></p>
 
         </div>
 
@@ -632,6 +715,7 @@ body {
 
             <p id="cvFormacao"></p>
             <p id="cvInstituicao"></p>
+            <p id="cvPeriodoFormacao"></p>
 
         </div>
 
@@ -675,24 +759,25 @@ body {
                 Experiência profissional
             </h2>
 
-            <div class="experiencia-item">
+            <div class="experiencia-item" id="experienciaItem1">
 
                 <div class="experiencia-top">
-
-                    <div class="experiencia-cargo"
-                    id="cvExpCargo"></div>
-
-                    <div class="experiencia-data"
-                    id="cvPeriodo"></div>
-
+                    <div class="experiencia-cargo" id="cvExpCargo"></div>
+                    <div class="experiencia-data" id="cvPeriodo"></div>
                 </div>
 
-                <div class="experiencia-empresa"
-                id="cvEmpresa"></div>
+                <div class="experiencia-empresa" id="cvEmpresa"></div>
+                <div class="experiencia-texto" id="cvExperiencia"></div>
 
-                <div class="experiencia-texto"
-                id="cvExperiencia"></div>
+            </div>
 
+            <div class="experiencia-item" id="experienciaItem2">
+                <div class="experiencia-top">
+                    <div class="experiencia-cargo" id="cvExpCargo2"></div>
+                    <div class="experiencia-data" id="cvPeriodo2"></div>
+                </div>
+                <div class="experiencia-empresa" id="cvEmpresa2"></div>
+                <div class="experiencia-texto" id="cvExperiencia2"></div>
             </div>
 
         </div>
@@ -754,106 +839,82 @@ Termos de Uso
 </footer>
 
 
+
 <script>
+function valor(id) {
+    return document.getElementById(id).value.trim();
+}
+
+function preencher(id, value) {
+    document.getElementById(id).textContent = value || "";
+}
+
+function atualizarVisibilidade(id, value) {
+    const el = document.getElementById(id);
+    if (el) el.style.display = value ? "" : "none";
+}
 
 function gerarCurriculo() {
-
-    const nome =
-        document.getElementById("nome").value.trim();
+    const nome = valor("nome");
 
     if (!nome) {
-
         alert("Digite seu nome completo.");
-
+        document.getElementById("nome").focus();
         return;
     }
 
+    preencher("cvNome", nome);
+    preencher("cvCargo", valor("cargo"));
+    preencher("cvEmail", valor("email"));
+    preencher("cvTelefone", valor("telefone"));
+    preencher("cvCidade", valor("cidade"));
+    preencher("cvLinkedin", valor("linkedin"));
 
-    document.getElementById("cvNome").textContent =
-        nome;
+    preencher("cvPerfil", valor("perfil"));
 
-    document.getElementById("cvCargo").textContent =
-        document.getElementById("cargo").value;
+    preencher("cvExpCargo", valor("expCargo"));
+    preencher("cvEmpresa", valor("empresa"));
+    preencher("cvPeriodo", valor("periodo"));
+    preencher("cvExperiencia", valor("experiencia"));
 
+    preencher("cvExpCargo2", valor("expCargo2"));
+    preencher("cvEmpresa2", valor("empresa2"));
+    preencher("cvPeriodo2", valor("periodo2"));
+    preencher("cvExperiencia2", valor("experiencia2"));
 
-    document.getElementById("cvEmail").textContent =
-        document.getElementById("email").value;
+    preencher("cvFormacao", valor("formacao"));
+    preencher("cvInstituicao", valor("instituicao"));
+    preencher("cvPeriodoFormacao", valor("periodoFormacao"));
 
-    document.getElementById("cvTelefone").textContent =
-        document.getElementById("telefone").value;
+    preencher("cvIdiomas", valor("idiomas"));
+    preencher("cvCursos", valor("cursos"));
 
-    document.getElementById("cvCidade").textContent =
-        document.getElementById("cidade").value;
-
-
-    document.getElementById("cvPerfil").textContent =
-        document.getElementById("perfil").value;
-
-
-    document.getElementById("cvExpCargo").textContent =
-        document.getElementById("expCargo").value;
-
-    document.getElementById("cvEmpresa").textContent =
-        document.getElementById("empresa").value;
-
-    document.getElementById("cvPeriodo").textContent =
-        document.getElementById("periodo").value;
-
-    document.getElementById("cvExperiencia").textContent =
-        document.getElementById("experiencia").value;
-
-
-    document.getElementById("cvFormacao").textContent =
-        document.getElementById("formacao").value;
-
-    document.getElementById("cvInstituicao").textContent =
-        document.getElementById("instituicao").value;
-
-
-    document.getElementById("cvIdiomas").textContent =
-        document.getElementById("idiomas").value;
-
-    document.getElementById("cvCursos").textContent =
-        document.getElementById("cursos").value;
-
-
-    const habilidades =
-        document.getElementById("habilidades").value;
-
-    const container =
-        document.getElementById("cvHabilidades");
-
+    const habilidades = valor("habilidades");
+    const container = document.getElementById("cvHabilidades");
     container.innerHTML = "";
 
-    habilidades
-        .split(",")
+    habilidades.split(",")
         .map(item => item.trim())
-        .filter(item => item)
+        .filter(Boolean)
+        .slice(0, 12)
         .forEach(item => {
-
-            const span =
-                document.createElement("span");
-
+            const span = document.createElement("span");
             span.className = "competencia";
-
             span.textContent = item;
-
             container.appendChild(span);
-
         });
 
+    atualizarVisibilidade("experienciaItem2",
+        valor("expCargo2") || valor("empresa2") || valor("periodo2") || valor("experiencia2"));
 
-    document.getElementById("resultado").style.display =
-        "block";
-
-
-    document.getElementById("resultado")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
+    document.getElementById("resultado").style.display = "block";
+    document.getElementById("resultado").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 }
-
 </script>
+
 
 </body>
 </html>
