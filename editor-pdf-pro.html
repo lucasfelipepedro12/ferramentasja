@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Editor de PDF PRO | FerramentasJá</title>
+
+    <meta name="description" content="Editor de PDF PRO do FerramentasJá. Junte, divida, reorganize e gerencie seus arquivos PDF.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .pdf-container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .pdf-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .pdf-tag {
+            display: inline-block;
+            background: #f5a900;
+            color: #111;
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .pdf-header h1 {
+            font-size: 36px;
+            margin: 15px 0 10px;
+        }
+
+        .pdf-header p {
+            color: #777;
+        }
+
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .pdf-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.07);
+        }
+
+        .pdf-icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .pdf-card h2 {
+            margin: 5px 0 10px;
+        }
+
+        .pdf-card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .pdf-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 13px 20px;
+            background: #4d8dff;
+            color: white;
+            text-decoration: none;
+            border-radius: 9px;
+            font-weight: bold;
+        }
+
+        .voltar {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #555;
+            text-decoration: none;
+        }
+
+        @media (max-width: 650px) {
+            .pdf-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pdf-header h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-container">
+
+        <a href="index.html" class="logo">
+            Ferramentas<span>Já</span>
+        </a>
+
+        <nav>
+            <a href="index.html">Ferramentas</a>
+            <a href="sobre.html">Sobre</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="pdf-container">
+
+    <div class="pdf-header">
+
+        <span class="pdf-tag">👑 FERRAMENTA PRO</span>
+
+        <h1>Editor de PDF</h1>
+
+        <p>
+            Ferramentas avançadas para trabalhar com seus arquivos PDF.
+        </p>
+
+    </div>
+
+    <div class="pdf-grid">
+
+        <div class="pdf-card">
+            <div class="pdf-icon">📎</div>
+            <h2>Juntar PDFs</h2>
+            <p>
+                Una vários arquivos PDF em um único documento.
+            </p>
+            <a class="pdf-button" href="#">
+                JUNTAR PDFs →
+            </a>
+        </div>
+
+        <div class="pdf-card">
+            <div class="pdf-icon">✂️</div>
+            <h2>Dividir PDF</h2>
+            <p>
+                Separe páginas e crie novos arquivos PDF.
+            </p>
+            <a class="pdf-button" href="#">
+                DIVIDIR PDF →
+            </a>
+        </div>
+
+        <div class="pdf-card">
+            <div class="pdf-icon">🗜️</div>
+            <h2>Comprimir PDF</h2>
+            <p>
+                Reduza o tamanho dos seus arquivos PDF.
+            </p>
+            <a class="pdf-button" href="#">
+                COMPRIMIR PDF →
+            </a>
+        </div>
+
+        <div class="pdf-card">
+            <div class="pdf-icon">🔄</div>
+            <h2>Organizar páginas</h2>
+            <p>
+                Reorganize, gire ou remova páginas do seu PDF.
+            </p>
+            <a class="pdf-button" href="#">
+                ORGANIZAR PDF →
+            </a>
+        </div>
+
+    </div>
+
+    <a class="voltar" href="index.html">
+        ← Voltar para FerramentasJá
+    </a>
+
+</main>
+
+<footer>
+    <p>© 2026 FerramentasJá — Ferramentas online gratuitas.</p>
+
+    <div class="footer-links">
+        <a href="sobre.html">Sobre</a>
+        <a href="privacidade.html">Política de Privacidade</a>
+        <a href="termos.html">Termos de Uso</a>
+    </div>
+</footer>
+
+</body>
+</html>
