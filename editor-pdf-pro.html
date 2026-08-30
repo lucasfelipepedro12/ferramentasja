@@ -1,198 +1,844 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Editor de PDF PRO | FerramentasJá</title>
+<title>Editor de PDF PRO | FerramentasJá</title>
 
-    <meta name="description" content="Editor de PDF PRO do FerramentasJá. Junte, divida, reorganize e gerencie seus arquivos PDF.">
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
-    <link rel="stylesheet" href="style.css">
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    <style>
-        .pdf-container {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 20px;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0b0d11;
+    color: #fff;
+}
 
-        .pdf-header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
+header {
+    padding: 18px 30px;
+    border-bottom: 1px solid #222;
+}
 
-        .pdf-tag {
-            display: inline-block;
-            background: #f5a900;
-            color: #111;
-            padding: 7px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-        }
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
 
-        .pdf-header h1 {
-            font-size: 36px;
-            margin: 15px 0 10px;
-        }
+.logo span {
+    color: #f5a900;
+}
 
-        .pdf-header p {
-            color: #777;
-        }
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 20px;
+}
 
-        .pdf-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
+h1 {
+    text-align: center;
+    margin-bottom: 8px;
+}
 
-        .pdf-card {
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(0,0,0,.07);
-        }
+.subtitle {
+    text-align: center;
+    color: #999;
+    margin-bottom: 30px;
+}
 
-        .pdf-icon {
-            font-size: 38px;
-            margin-bottom: 10px;
-        }
+.upload {
+    border: 2px dashed #f5a900;
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+    background: #11151d;
+    margin-bottom: 25px;
+}
 
-        .pdf-card h2 {
-            margin: 5px 0 10px;
-        }
+.upload input {
+    display: none;
+}
 
-        .pdf-card p {
-            color: #666;
-            line-height: 1.5;
-        }
+.upload label {
+    display: inline-block;
+    background: #f5a900;
+    color: #111;
+    padding: 14px 24px;
+    border-radius: 9px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .pdf-button {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 13px 20px;
-            background: #4d8dff;
-            color: white;
-            text-decoration: none;
-            border-radius: 9px;
-            font-weight: bold;
-        }
+#fileInfo {
+    margin-top: 15px;
+    color: #aaa;
+}
 
-        .voltar {
-            display: block;
-            text-align: center;
-            margin-top: 30px;
-            color: #555;
-            text-decoration: none;
-        }
+.tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
 
-        @media (max-width: 650px) {
-            .pdf-grid {
-                grid-template-columns: 1fr;
-            }
+button {
+    border: 0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    background: #f5a900;
+    color: #111;
+}
 
-            .pdf-header h1 {
-                font-size: 28px;
-            }
-        }
-    </style>
+button.secondary {
+    background: #222833;
+    color: white;
+}
+
+button.danger {
+    background: #c62828;
+    color: white;
+}
+
+button:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.pages {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 18px;
+}
+
+.page {
+    background: #151922;
+    border: 2px solid #282d38;
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.page.selected {
+    border-color: #f5a900;
+    box-shadow: 0 0 0 2px rgba(245,169,0,.2);
+}
+
+.page canvas {
+    width: 100%;
+    background: white;
+    display: block;
+    border-radius: 5px;
+}
+
+.page-number {
+    text-align: center;
+    padding: 8px 0 2px;
+    color: #aaa;
+}
+
+.badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #f5a900;
+    color: #111;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    font-weight: bold;
+}
+
+.status {
+    text-align: center;
+    color: #aaa;
+    margin: 20px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+}
+
+.modal-box {
+    background: #151922;
+    padding: 25px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+}
+
+.modal-box h2 {
+    margin-top: 0;
+}
+
+.modal-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 7px;
+    border: 1px solid #444;
+    background: #0d1016;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    color: #777;
+    padding: 35px;
+    margin-top: 40px;
+}
+
+@media(max-width:600px) {
+    .upload {
+        padding: 25px 15px;
+    }
+
+    .tools {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <div class="header-container">
-
-        <a href="index.html" class="logo">
-            Ferramentas<span>Já</span>
-        </a>
-
-        <nav>
-            <a href="index.html">Ferramentas</a>
-            <a href="sobre.html">Sobre</a>
-        </nav>
-
-    </div>
+    <a href="index.html" class="logo">
+        Ferramentas<span>Já</span>
+    </a>
 </header>
 
-<main class="pdf-container">
+<main class="container">
 
-    <div class="pdf-header">
+    <h1>Editor de PDF PRO</h1>
 
-        <span class="pdf-tag">👑 FERRAMENTA PRO</span>
+    <p class="subtitle">
+        Junte, divida, organize, gire, remova páginas e otimize seus PDFs.
+    </p>
 
-        <h1>Editor de PDF</h1>
+    <div class="upload">
+        <input type="file" id="pdfInput" accept="application/pdf" multiple>
 
-        <p>
-            Ferramentas avançadas para trabalhar com seus arquivos PDF.
-        </p>
+        <label for="pdfInput">
+            📄 Selecionar PDF
+        </label>
+
+        <div id="fileInfo">
+            Nenhum arquivo selecionado.
+        </div>
+    </div>
+
+    <div class="tools">
+
+        <button onclick="juntarPDFs()" id="joinBtn" disabled>
+            📎 Juntar PDFs
+        </button>
+
+        <button onclick="dividirPDF()" id="splitBtn" disabled>
+            ✂️ Dividir PDF
+        </button>
+
+        <button onclick="removerPaginas()" id="removeBtn" disabled>
+            🗑️ Remover páginas
+        </button>
+
+        <button onclick="girarPaginas()" id="rotateBtn" disabled>
+            🔄 Girar páginas
+        </button>
+
+        <button onclick="moverParaCima()" id="upBtn" disabled>
+            ⬆️ Mover para cima
+        </button>
+
+        <button onclick="moverParaBaixo()" id="downBtn" disabled>
+            ⬇️ Mover para baixo
+        </button>
+
+        <button onclick="comprimirPDF()" id="compressBtn" disabled>
+            🗜️ Comprimir PDF
+        </button>
+
+        <button onclick="baixarPDF()" id="downloadBtn" disabled>
+            ⬇️ Baixar PDF
+        </button>
+
+        <button onclick="limpar()" class="secondary">
+            Limpar
+        </button>
 
     </div>
 
-    <div class="pdf-grid">
-
-        <div class="pdf-card">
-            <div class="pdf-icon">📎</div>
-            <h2>Juntar PDFs</h2>
-            <p>
-                Una vários arquivos PDF em um único documento.
-            </p>
-            <a class="pdf-button" href="#">
-                JUNTAR PDFs →
-            </a>
-        </div>
-
-        <div class="pdf-card">
-            <div class="pdf-icon">✂️</div>
-            <h2>Dividir PDF</h2>
-            <p>
-                Separe páginas e crie novos arquivos PDF.
-            </p>
-            <a class="pdf-button" href="#">
-                DIVIDIR PDF →
-            </a>
-        </div>
-
-        <div class="pdf-card">
-            <div class="pdf-icon">🗜️</div>
-            <h2>Comprimir PDF</h2>
-            <p>
-                Reduza o tamanho dos seus arquivos PDF.
-            </p>
-            <a class="pdf-button" href="#">
-                COMPRIMIR PDF →
-            </a>
-        </div>
-
-        <div class="pdf-card">
-            <div class="pdf-icon">🔄</div>
-            <h2>Organizar páginas</h2>
-            <p>
-                Reorganize, gire ou remova páginas do seu PDF.
-            </p>
-            <a class="pdf-button" href="#">
-                ORGANIZAR PDF →
-            </a>
-        </div>
-
+    <div class="status" id="status">
+        Selecione um PDF para começar.
     </div>
 
-    <a class="voltar" href="index.html">
-        ← Voltar para FerramentasJá
-    </a>
+    <div class="pages" id="pages"></div>
 
 </main>
 
 <footer>
-    <p>© 2026 FerramentasJá — Ferramentas online gratuitas.</p>
-
-    <div class="footer-links">
-        <a href="sobre.html">Sobre</a>
-        <a href="privacidade.html">Política de Privacidade</a>
-        <a href="termos.html">Termos de Uso</a>
-    </div>
+    © 2026 FerramentasJá — Editor de PDF PRO
 </footer>
+
+<script>
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+const {
+    PDFDocument,
+    degrees
+} = PDFLib;
+
+let arquivos = [];
+let pdfOriginal = null;
+let paginas = [];
+let selecionadas = new Set();
+
+const input = document.getElementById("pdfInput");
+const pagesContainer = document.getElementById("pages");
+const statusEl = document.getElementById("status");
+
+input.addEventListener("change", async function() {
+
+    arquivos = [...this.files];
+
+    if (!arquivos.length) return;
+
+    document.getElementById("fileInfo").innerText =
+        arquivos.length === 1
+        ? arquivos[0].name
+        : arquivos.length + " PDFs selecionados";
+
+    await carregarPDFs();
+
+});
+
+async function carregarPDFs() {
+
+    paginas = [];
+    selecionadas.clear();
+
+    statusEl.innerText = "Carregando PDF...";
+
+    for (const arquivo of arquivos) {
+
+        const buffer = await arquivo.arrayBuffer();
+
+        const pdf = await pdfjsLib.getDocument({
+            data: buffer
+        }).promise;
+
+        for (let i = 1; i <= pdf.numPages; i++) {
+
+            paginas.push({
+                pdf,
+                numero: i,
+                arquivo: arquivo.name,
+                rotacao: 0
+            });
+
+        }
+    }
+
+    mostrarPaginas();
+
+    ativarBotoes();
+
+    statusEl.innerText =
+        paginas.length + " página(s) carregada(s). Clique nas páginas para selecionar.";
+
+}
+
+async function mostrarPaginas() {
+
+    pagesContainer.innerHTML = "";
+
+    for (let i = 0; i < paginas.length; i++) {
+
+        const info = paginas[i];
+
+        const div = document.createElement("div");
+
+        div.className = "page";
+
+        if (selecionadas.has(i)) {
+            div.classList.add("selected");
+        }
+
+        div.onclick = function() {
+            selecionarPagina(i);
+        };
+
+        const canvas = document.createElement("canvas");
+
+        const page = await info.pdf.getPage(info.numero);
+
+        const viewport = page.getViewport({
+            scale: 0.35,
+            rotation: info.rotacao
+        });
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        const ctx = canvas.getContext("2d");
+
+        await page.render({
+            canvasContext: ctx,
+            viewport
+        }).promise;
+
+        div.appendChild(canvas);
+
+        const numero = document.createElement("div");
+
+        numero.className = "page-number";
+
+        numero.innerText =
+            "Página " + (i + 1);
+
+        div.appendChild(numero);
+
+        if (selecionadas.has(i)) {
+
+            const badge = document.createElement("div");
+
+            badge.className = "badge";
+
+            badge.innerText = "✓";
+
+            div.appendChild(badge);
+        }
+
+        pagesContainer.appendChild(div);
+    }
+}
+
+function selecionarPagina(index) {
+
+    if (selecionadas.has(index)) {
+        selecionadas.delete(index);
+    } else {
+        selecionadas.add(index);
+    }
+
+    mostrarPaginas();
+
+    statusEl.innerText =
+        selecionadas.size +
+        " página(s) selecionada(s).";
+}
+
+function ativarBotoes() {
+
+    const estado = paginas.length > 0;
+
+    document.querySelectorAll(".tools button:not(.secondary)")
+        .forEach(btn => btn.disabled = !estado);
+}
+
+async function criarPDFComPaginas(lista) {
+
+    const novoPDF = await PDFDocument.create();
+
+    for (const info of lista) {
+
+        const bytes = await info.pdf.getData();
+
+        const pdfFonte =
+            await PDFDocument.load(bytes);
+
+        const [pagina] =
+            await novoPDF.copyPages(
+                pdfFonte,
+                [info.numero - 1]
+            );
+
+        pagina.setRotation(
+            degrees(info.rotacao || 0)
+        );
+
+        novoPDF.addPage(pagina);
+    }
+
+    return novoPDF;
+}
+
+async function baixarPDF() {
+
+    if (!paginas.length) return;
+
+    statusEl.innerText =
+        "Preparando PDF...";
+
+    const novoPDF =
+        await criarPDFComPaginas(paginas);
+
+    const bytes =
+        await novoPDF.save({
+            useObjectStreams: true
+        });
+
+    baixarArquivo(
+        bytes,
+        "editor-pdf-pro.pdf"
+    );
+
+    statusEl.innerText =
+        "PDF criado com sucesso!";
+}
+
+async function juntarPDFs() {
+
+    if (arquivos.length < 2) {
+
+        alert(
+            "Selecione pelo menos 2 arquivos PDF para juntar."
+        );
+
+        return;
+    }
+
+    statusEl.innerText =
+        "Juntando PDFs...";
+
+    const novoPDF =
+        await criarPDFComPaginas(paginas);
+
+    const bytes =
+        await novoPDF.save({
+            useObjectStreams: true
+        });
+
+    baixarArquivo(
+        bytes,
+        "pdf-juntado.pdf"
+    );
+
+    statusEl.innerText =
+        "PDFs juntados com sucesso!";
+}
+
+async function dividirPDF() {
+
+    if (!selecionadas.size) {
+
+        alert(
+            "Selecione as páginas que deseja colocar no novo PDF."
+        );
+
+        return;
+    }
+
+    statusEl.innerText =
+        "Criando PDF separado...";
+
+    const lista =
+        paginas.filter((_, i) =>
+            selecionadas.has(i)
+        );
+
+    const novoPDF =
+        await criarPDFComPaginas(lista);
+
+    const bytes =
+        await novoPDF.save({
+            useObjectStreams: true
+        });
+
+    baixarArquivo(
+        bytes,
+        "pdf-dividido.pdf"
+    );
+
+    statusEl.innerText =
+        "PDF dividido com sucesso!";
+}
+
+async function removerPaginas() {
+
+    if (!selecionadas.size) {
+
+        alert(
+            "Selecione as páginas que deseja remover."
+        );
+
+        return;
+    }
+
+    if (selecionadas.size >= paginas.length) {
+
+        alert(
+            "Você não pode remover todas as páginas."
+        );
+
+        return;
+    }
+
+    paginas =
+        paginas.filter((_, i) =>
+            !selecionadas.has(i)
+        );
+
+    selecionadas.clear();
+
+    await mostrarPaginas();
+
+    statusEl.innerText =
+        "Páginas removidas. Clique em 'Baixar PDF' para salvar.";
+}
+
+async function girarPaginas() {
+
+    if (!selecionadas.size) {
+
+        alert(
+            "Selecione as páginas que deseja girar."
+        );
+
+        return;
+    }
+
+    paginas.forEach((pagina, i) => {
+
+        if (selecionadas.has(i)) {
+
+            pagina.rotacao =
+                (pagina.rotacao + 90) % 360;
+        }
+
+    });
+
+    await mostrarPaginas();
+
+    statusEl.innerText =
+        "Páginas giradas. Clique em 'Baixar PDF' para salvar.";
+}
+
+function moverParaCima() {
+
+    const lista =
+        [...selecionadas].sort((a,b) => a-b);
+
+    if (!lista.length) {
+
+        alert(
+            "Selecione uma página."
+        );
+
+        return;
+    }
+
+    const primeiro = lista[0];
+
+    if (primeiro === 0) return;
+
+    const anterior =
+        paginas[primeiro - 1];
+
+    paginas[primeiro - 1] =
+        paginas[primeiro];
+
+    paginas[primeiro] =
+        anterior;
+
+    selecionadas.clear();
+
+    mostrarPaginas();
+}
+
+function moverParaBaixo() {
+
+    const lista =
+        [...selecionadas].sort((a,b) => b-a);
+
+    if (!lista.length) {
+
+        alert(
+            "Selecione uma página."
+        );
+
+        return;
+    }
+
+    const primeiro = lista[0];
+
+    if (primeiro === paginas.length - 1)
+        return;
+
+    const proxima =
+        paginas[primeiro + 1];
+
+    paginas[primeiro + 1] =
+        paginas[primeiro];
+
+    paginas[primeiro] =
+        proxima;
+
+    selecionadas.clear();
+
+    mostrarPaginas();
+}
+
+async function comprimirPDF() {
+
+    if (!paginas.length) return;
+
+    statusEl.innerText =
+        "Comprimindo PDF... Isso pode levar alguns segundos.";
+
+    try {
+
+        const novoPDF =
+            await PDFDocument.create();
+
+        for (const info of paginas) {
+
+            const page =
+                await info.pdf.getPage(info.numero);
+
+            const viewport =
+                page.getViewport({
+                    scale: 1.2,
+                    rotation: info.rotacao
+                });
+
+            const canvas =
+                document.createElement("canvas");
+
+            canvas.width =
+                viewport.width;
+
+            canvas.height =
+                viewport.height;
+
+            const ctx =
+                canvas.getContext("2d");
+
+            await page.render({
+                canvasContext: ctx,
+                viewport
+            }).promise;
+
+            const imagem =
+                canvas.toDataURL(
+                    "image/jpeg",
+                    0.65
+                );
+
+            const jpg =
+                await novoPDF.embedJpg(imagem);
+
+            const novaPagina =
+                novoPDF.addPage([
+                    viewport.width,
+                    viewport.height
+                ]);
+
+            novaPagina.drawImage(jpg, {
+                x: 0,
+                y: 0,
+                width: viewport.width,
+                height: viewport.height
+            });
+        }
+
+        const bytes =
+            await novoPDF.save({
+                useObjectStreams: true
+            });
+
+        baixarArquivo(
+            bytes,
+            "pdf-comprimido.pdf"
+        );
+
+        statusEl.innerText =
+            "PDF comprimido com sucesso!";
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        statusEl.innerText =
+            "Não foi possível comprimir o PDF.";
+    }
+}
+
+function baixarArquivo(bytes, nome) {
+
+    const blob =
+        new Blob([bytes], {
+            type: "application/pdf"
+        });
+
+    const url =
+        URL.createObjectURL(blob);
+
+    const a =
+        document.createElement("a");
+
+    a.href = url;
+    a.download = nome;
+
+    document.body.appendChild(a);
+
+    a.click();
+
+    a.remove();
+
+    URL.revokeObjectURL(url);
+}
+
+function limpar() {
+
+    arquivos = [];
+    paginas = [];
+    selecionadas.clear();
+
+    input.value = "";
+
+    pagesContainer.innerHTML = "";
+
+    document.getElementById("fileInfo").innerText =
+        "Nenhum arquivo selecionado.";
+
+    statusEl.innerText =
+        "Selecione um PDF para começar.";
+
+    document.querySelectorAll(".tools button:not(.secondary)")
+        .forEach(btn => btn.disabled = true);
+}
+
+</script>
 
 </body>
 </html>
