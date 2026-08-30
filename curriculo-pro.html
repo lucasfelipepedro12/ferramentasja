@@ -4,453 +4,474 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gerador de Currículo PRO | FerramentasJá</title>
-
-<meta name="description" content="Crie um currículo profissional, moderno e pronto para enviar às empresas.">
+<title>Currículo Profissional PRO | FerramentasJá</title>
+<meta name="description" content="Crie um currículo profissional moderno e pronto para imprimir.">
 
 <link rel="stylesheet" href="style.css">
 
 <style>
+* {
+    box-sizing: border-box;
+}
 
-/* =========================
-   PÁGINA
-========================= */
+body {
+    background: #f3f4f6;
+}
 
-.cv-page {
-    max-width: 1400px;
+/* ===== CONTAINER ===== */
+
+.cv-container {
+    max-width: 1050px;
     margin: 45px auto;
     padding: 20px;
 }
 
-.cv-top {
+.cv-header {
     text-align: center;
     margin-bottom: 35px;
 }
 
-.cv-pro {
+.cv-tag {
     display: inline-block;
     background: #f5a900;
     color: #111;
-    padding: 8px 18px;
+    padding: 7px 16px;
     border-radius: 30px;
     font-size: 12px;
     font-weight: 800;
-    letter-spacing: .5px;
 }
 
-.cv-top h1 {
-    font-size: 38px;
-    margin: 16px 0 8px;
+.cv-header h1 {
+    font-size: 36px;
+    margin: 14px 0 8px;
 }
 
-.cv-top p {
+.cv-header p {
     color: #777;
-    margin: 0;
 }
 
-
-/* =========================
-   EDITOR
-========================= */
-
-.cv-editor {
-    display: grid;
-    grid-template-columns: 420px 1fr;
-    gap: 30px;
-    align-items: start;
-}
-
-
-/* FORMULÁRIO */
+/* ===== FORM ===== */
 
 .cv-form {
-    background: #fff;
+    background: white;
+    padding: 35px;
     border-radius: 18px;
-    padding: 28px;
-    box-shadow: 0 12px 40px rgba(0,0,0,.08);
+    box-shadow: 0 12px 35px rgba(0,0,0,.08);
 }
 
-.cv-form-title {
-    margin: 0 0 6px;
-    font-size: 22px;
+.cv-form h2 {
+    margin: 32px 0 10px;
+    padding-bottom: 9px;
+    border-bottom: 2px solid #eee;
 }
 
-.cv-form-subtitle {
-    color: #777;
-    font-size: 14px;
-    margin-bottom: 25px;
-}
-
-.form-section {
-    margin-top: 28px;
-}
-
-.form-section:first-of-type {
+.cv-form h2:first-child {
     margin-top: 0;
 }
 
-.form-section h2 {
-    font-size: 16px;
-    margin: 0 0 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e7e7e7;
+.campo {
+    margin-top: 17px;
 }
 
-.field {
-    margin-bottom: 15px;
-}
-
-.field label {
+.campo label {
     display: block;
-    font-size: 13px;
     font-weight: 700;
     margin-bottom: 7px;
 }
 
-.field input,
-.field textarea {
+.campo input,
+.campo textarea {
     width: 100%;
-    box-sizing: border-box;
+    padding: 13px;
     border: 1px solid #ddd;
     border-radius: 9px;
-    padding: 11px 12px;
     font-family: inherit;
-    font-size: 14px;
-    outline: none;
-    transition: .2s;
+    font-size: 15px;
 }
 
-.field input:focus,
-.field textarea:focus {
-    border-color: #f5a900;
-    box-shadow: 0 0 0 3px rgba(245,169,0,.12);
-}
-
-.field textarea {
-    min-height: 100px;
+.campo textarea {
+    min-height: 95px;
     resize: vertical;
 }
 
-.field small {
-    display: block;
-    color: #888;
-    font-size: 11px;
-    margin-top: 5px;
-}
-
-.generate-btn {
+.gerar-button {
     width: 100%;
-    border: 0;
+    margin-top: 30px;
+    padding: 17px;
+    border: none;
     border-radius: 10px;
-    padding: 15px;
-    margin-top: 10px;
     background: #f5a900;
     color: #111;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 800;
     cursor: pointer;
-    transition: .2s;
 }
 
-.generate-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 7px 18px rgba(245,169,0,.25);
+.gerar-button:hover {
+    opacity: .9;
 }
 
+/* ===== RESULTADO ===== */
 
-/* =========================
-   PRÉVIA
-========================= */
-
-.preview-area {
-    background: #e9edf2;
-    border-radius: 18px;
-    padding: 30px;
-    min-height: 900px;
+.resultado-cv {
+    display: none;
+    margin-top: 40px;
 }
-
-.preview-title {
-    text-align: center;
-    color: #555;
-    font-size: 13px;
-    font-weight: 700;
-    margin-bottom: 18px;
-}
-
-
-/* CURRÍCULO A4 */
 
 .curriculo {
     width: 210mm;
     min-height: 297mm;
-    max-width: 100%;
     margin: auto;
     background: white;
-    box-shadow: 0 15px 45px rgba(0,0,0,.18);
-    box-sizing: border-box;
     display: grid;
     grid-template-columns: 31% 69%;
-    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,.15);
 }
 
+/* ===== LATERAL ===== */
 
-/* COLUNA ESQUERDA */
-
-.cv-sidebar {
-    background: #17202b;
+.cv-lateral {
+    background: #151922;
     color: white;
-    padding: 35px 25px;
+    padding: 35px 27px;
 }
 
-.cv-sidebar h1 {
-    font-size: 27px;
+.cv-nome {
+    font-size: 28px;
     line-height: 1.1;
-    margin: 0 0 8px;
+    margin: 0 0 7px;
     word-break: break-word;
 }
 
 .cv-cargo {
     color: #f5a900;
     font-size: 13px;
-    font-weight: 700;
-    line-height: 1.4;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     margin-bottom: 28px;
 }
 
-.side-section {
-    margin-top: 25px;
+.cv-side-section {
+    margin-top: 27px;
 }
 
-.side-section h3 {
+.cv-side-section h3 {
     color: #f5a900;
     font-size: 11px;
-    letter-spacing: 1.2px;
-    margin: 0 0 10px;
+    letter-spacing: 1.3px;
+    margin: 0 0 11px;
     text-transform: uppercase;
 }
 
-.side-section p {
-    color: #dce1e6;
+.cv-side-section p {
+    margin: 5px 0;
     font-size: 11px;
-    line-height: 1.65;
-    margin: 0;
+    line-height: 1.55;
+    color: #d5d7dc;
     white-space: pre-line;
-    word-break: break-word;
 }
 
-
-/* COLUNA PRINCIPAL */
-
-.cv-main {
-    padding: 38px 35px;
-}
-
-.cv-main-section {
-    margin-bottom: 25px;
-}
-
-.cv-main-section:last-child {
-    margin-bottom: 0;
-}
-
-.cv-main-section h2 {
-    color: #17202b;
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin: 0 0 12px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #f5a900;
-}
-
-.cv-main-section p {
-    font-size: 11.5px;
-    color: #424a52;
-    line-height: 1.7;
+.cv-side-section ul {
     margin: 0;
+    padding-left: 15px;
+}
+
+.cv-side-section li {
+    font-size: 11px;
+    margin: 6px 0;
+    color: #d5d7dc;
+}
+
+/* ===== PRINCIPAL ===== */
+
+.cv-principal {
+    padding: 35px 38px;
+    color: #20242b;
+}
+
+.cv-section {
+    margin-bottom: 27px;
+}
+
+.cv-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 13px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #151922;
+}
+
+.cv-section-title::after {
+    content: "";
+    height: 2px;
+    background: #f5a900;
+    flex: 1;
+}
+
+.cv-profile {
+    font-size: 12px;
+    line-height: 1.65;
+    color: #50545b;
     white-space: pre-line;
 }
 
 .experiencia-item {
-    margin-bottom: 18px;
+    margin-bottom: 22px;
 }
 
-.experiencia-item:last-child {
-    margin-bottom: 0;
-}
-
-.exp-top {
+.experiencia-top {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 15px;
 }
 
-.exp-cargo {
-    font-size: 13px;
+.experiencia-cargo {
+    font-size: 14px;
     font-weight: 800;
-    color: #17202b;
+    color: #151922;
 }
 
-.exp-periodo {
+.experiencia-data {
     font-size: 10px;
     color: #777;
     white-space: nowrap;
 }
 
-.exp-empresa {
-    font-size: 11px;
-    color: #f0a400;
+.experiencia-empresa {
+    color: #f0a000;
     font-weight: 700;
-    margin: 3px 0 6px;
+    font-size: 11px;
+    margin-top: 3px;
 }
 
-.exp-descricao {
+.experiencia-texto {
+    margin-top: 7px;
     font-size: 11px;
     line-height: 1.6;
-    color: #505860;
+    color: #555;
     white-space: pre-line;
 }
 
-
-/* HABILIDADES */
-
-.skills {
+.competencias {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 7px;
 }
 
-.skill {
-    background: #f0f2f4;
-    color: #303840;
-    padding: 5px 9px;
-    border-radius: 5px;
+.competencia {
+    background: #f1f2f4;
+    border-left: 3px solid #f5a900;
+    padding: 7px 10px;
     font-size: 10px;
-    font-weight: 600;
+    font-weight: 700;
+    color: #333;
 }
 
+.formacao-item {
+    margin-bottom: 13px;
+}
 
-/* BOTÃO */
-
-.print-btn {
-    display: block;
-    width: 210mm;
-    max-width: 100%;
-    margin: 22px auto 0;
-    padding: 14px;
-    border: 0;
-    border-radius: 10px;
-    background: #17202b;
-    color: white;
+.formacao-curso {
+    font-size: 12px;
     font-weight: 800;
-    cursor: pointer;
 }
 
-.print-btn:hover {
-    background: #222e3b;
+.formacao-instituicao {
+    font-size: 10px;
+    color: #777;
+    margin-top: 3px;
 }
 
-.back-link {
+.download-area {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.download-button {
+    display: inline-block;
+    padding: 14px 25px;
+    background: #20a05a;
+    color: white;
+    text-decoration: none;
+    border-radius: 9px;
+    font-weight: 800;
+}
+
+.voltar {
     display: block;
     text-align: center;
-    margin: 30px 0;
+    margin-top: 25px;
     color: #555;
     text-decoration: none;
 }
 
+/* ===== MOBILE ===== */
 
-/* =========================
-   RESPONSIVO
-========================= */
+@media (max-width: 750px) {
 
-@media (max-width: 1050px) {
-
-    .cv-editor {
-        grid-template-columns: 1fr;
-    }
-
-    .preview-area {
-        overflow-x: auto;
-    }
-
-    .curriculo {
-        min-width: 210mm;
-    }
-
-}
-
-@media (max-width: 600px) {
-
-    .cv-page {
+    .cv-container {
+        margin: 20px auto;
         padding: 10px;
-        margin-top: 25px;
-    }
-
-    .cv-top h1 {
-        font-size: 28px;
     }
 
     .cv-form {
-        padding: 20px;
-    }
-
-    .preview-area {
-        padding: 10px;
-    }
-
-}
-
-
-/* =========================
-   IMPRESSÃO / PDF
-========================= */
-
-@media print {
-
-    body {
-        background: white !important;
-    }
-
-    header,
-    footer,
-    .cv-top,
-    .cv-form,
-    .preview-title,
-    .print-btn,
-    .back-link {
-        display: none !important;
-    }
-
-    .cv-page {
-        margin: 0;
-        padding: 0;
-        max-width: none;
-    }
-
-    .cv-editor {
-        display: block;
-    }
-
-    .preview-area {
-        padding: 0;
-        margin: 0;
-        background: white;
+        padding: 22px;
     }
 
     .curriculo {
-        width: 210mm;
-        min-height: 297mm;
-        max-width: none;
-        box-shadow: none;
-        margin: 0;
+        width: 100%;
+        min-height: auto;
+        grid-template-columns: 1fr;
     }
+
+    .cv-lateral {
+        padding: 28px;
+    }
+
+    .cv-principal {
+        padding: 28px;
+    }
+
+    .experiencia-top {
+        display: block;
+    }
+
+    .experiencia-data {
+        display: block;
+        margin-top: 4px;
+    }
+}
+
+/* ===== IMPRESSÃO ===== */
+
+@media print {
 
     @page {
         size: A4;
         margin: 0;
     }
+
+    body {
+        background: white;
+    }
+
+    body * {
+        visibility: hidden;
+    }
+
+    .curriculo,
+    .curriculo * {
+        visibility: visible;
+    }
+
+    .curriculo {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 210mm;
+        min-height: 297mm;
+        box-shadow: none;
+    }
+
+    .download-area,
+    .voltar {
+        display: none !important;
+    }
 }
 
+/* =========================
+   IMPRESSÃO DO CURRÍCULO
+   ========================= */
+
+@media print {
+
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    html,
+    body {
+        width: 210mm;
+        margin: 0;
+        padding: 0;
+        background: white !important;
+    }
+
+    /* Esconde tudo que não pertence ao currículo */
+    header,
+    footer,
+    .cv-header,
+    .cv-form,
+    .voltar,
+    .download-button {
+        display: none !important;
+    }
+
+    main.cv-container {
+        width: 210mm;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .resultado-cv {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .curriculo {
+        width: 210mm;
+        min-height: 297mm;
+        box-sizing: border-box;
+
+        margin: 0 !important;
+        padding: 18mm 18mm !important;
+
+        box-shadow: none !important;
+        border-radius: 0 !important;
+
+        background: white !important;
+
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+
+    .curriculo h1 {
+        font-size: 28px;
+        margin-top: 0;
+    }
+
+    .curriculo h3 {
+        font-size: 12px;
+        margin-top: 20px;
+        margin-bottom: 8px;
+
+        page-break-after: avoid;
+    }
+
+    .curriculo p {
+        font-size: 11px;
+        line-height: 1.45;
+
+        page-break-inside: avoid;
+    }
+
+    .curriculo .contato {
+        font-size: 10px;
+        margin-bottom: 18px;
+    }
+
+    /* Evita quebrar blocos no meio */
+    .curriculo > * {
+        page-break-inside: avoid;
+    }
+}
 </style>
 </head>
 
@@ -471,653 +492,366 @@
     </div>
 </header>
 
+<main class="cv-container">
 
-<main class="cv-page">
+<div class="cv-header">
 
-    <div class="cv-top">
+    <span class="cv-tag">👑 FERRAMENTA PRO</span>
 
-        <span class="cv-pro">
-            👑 FERRAMENTA PRO
-        </span>
+    <h1>Gerador de Currículo</h1>
 
-        <h1>Gerador de Currículo</h1>
+    <p>
+        Crie um currículo moderno, profissional e pronto para enviar.
+    </p>
 
-        <p>
-            Crie um currículo profissional pronto para apresentar às empresas.
-        </p>
+</div>
 
+<div class="cv-form">
+
+    <h2>👤 Dados pessoais</h2>
+
+    <div class="campo">
+        <label>Nome completo</label>
+        <input id="nome" placeholder="Ex.: João da Silva">
     </div>
 
+    <div class="campo">
+        <label>Cargo desejado</label>
+        <input id="cargo" placeholder="Ex.: Analista Administrativo">
+    </div>
 
-    <div class="cv-editor">
+    <div class="campo">
+        <label>E-mail</label>
+        <input id="email" placeholder="seu@email.com">
+    </div>
+
+    <div class="campo">
+        <label>Telefone</label>
+        <input id="telefone" placeholder="(11) 99999-9999">
+    </div>
+
+    <div class="campo">
+        <label>Cidade / Estado</label>
+        <input id="cidade" placeholder="São Paulo - SP">
+    </div>
+
+    <h2>🎯 Perfil profissional</h2>
+
+    <div class="campo">
+        <textarea id="perfil"
+        placeholder="Fale brevemente sobre sua experiência, seus pontos fortes e o tipo de profissional que você é."></textarea>
+    </div>
+
+    <h2>💼 Experiência profissional</h2>
+
+    <div class="campo">
+        <label>Cargo</label>
+        <input id="expCargo" placeholder="Ex.: Assistente Administrativo">
+    </div>
+
+    <div class="campo">
+        <label>Empresa</label>
+        <input id="empresa" placeholder="Ex.: Empresa ABC">
+    </div>
+
+    <div class="campo">
+        <label>Período</label>
+        <input id="periodo" placeholder="2022 - 2025">
+    </div>
+
+    <div class="campo">
+        <label>Principais atividades e resultados</label>
+        <textarea id="experiencia"
+        placeholder="Descreva suas principais responsabilidades e resultados."></textarea>
+    </div>
+
+    <h2>🎓 Formação</h2>
+
+    <div class="campo">
+        <label>Curso / Formação</label>
+        <input id="formacao" placeholder="Ex.: Administração">
+    </div>
+
+    <div class="campo">
+        <label>Instituição</label>
+        <input id="instituicao" placeholder="Ex.: Universidade XYZ">
+    </div>
+
+    <h2>⭐ Competências</h2>
+
+    <div class="campo">
+        <textarea id="habilidades"
+        placeholder="Ex.: Excel, Comunicação, Liderança, Organização, Atendimento ao cliente"></textarea>
+    </div>
+
+    <h2>🌎 Idiomas</h2>
+
+    <div class="campo">
+        <input id="idiomas" placeholder="Ex.: Inglês intermediário, Espanhol básico">
+    </div>
+
+    <h2>📚 Cursos complementares</h2>
+
+    <div class="campo">
+        <textarea id="cursos"
+        placeholder="Ex.: Excel Avançado - 2025&#10;Marketing Digital - 2024"></textarea>
+    </div>
+
+    <button class="gerar-button" onclick="gerarCurriculo()">
+        GERAR MEU CURRÍCULO PROFISSIONAL →
+    </button>
+
+</div>
 
 
-        <!-- =========================
-             FORMULÁRIO
-        ========================== -->
+<div class="resultado-cv" id="resultado">
 
-        <div class="cv-form">
+<div class="curriculo">
 
-            <h2 class="cv-form-title">
-                Monte seu currículo
+    <!-- LATERAL -->
+
+    <aside class="cv-lateral">
+
+        <h1 class="cv-nome" id="cvNome"></h1>
+
+        <div class="cv-cargo" id="cvCargo"></div>
+
+        <div class="cv-side-section">
+
+            <h3>Contato</h3>
+
+            <p id="cvEmail"></p>
+            <p id="cvTelefone"></p>
+            <p id="cvCidade"></p>
+
+        </div>
+
+        <div class="cv-side-section">
+
+            <h3>Formação</h3>
+
+            <p id="cvFormacao"></p>
+            <p id="cvInstituicao"></p>
+
+        </div>
+
+        <div class="cv-side-section">
+
+            <h3>Idiomas</h3>
+
+            <p id="cvIdiomas"></p>
+
+        </div>
+
+        <div class="cv-side-section">
+
+            <h3>Cursos</h3>
+
+            <p id="cvCursos"></p>
+
+        </div>
+
+    </aside>
+
+
+    <!-- PRINCIPAL -->
+
+    <section class="cv-principal">
+
+        <div class="cv-section">
+
+            <h2 class="cv-section-title">
+                Perfil profissional
             </h2>
 
-            <p class="cv-form-subtitle">
-                Preencha seus dados e veja o resultado ao lado.
-            </p>
-
-
-            <div class="form-section">
-
-                <h2>Informações pessoais</h2>
-
-                <div class="field">
-                    <label>Nome completo</label>
-                    <input
-                        id="nome"
-                        type="text"
-                        placeholder="Ex.: João da Silva"
-                        oninput="atualizarCurriculo()"
-                    >
-                </div>
-
-                <div class="field">
-                    <label>Cargo / área desejada</label>
-                    <input
-                        id="cargo"
-                        type="text"
-                        placeholder="Ex.: Assistente Administrativo"
-                        oninput="atualizarCurriculo()"
-                    >
-                </div>
-
-                <div class="field">
-                    <label>E-mail</label>
-                    <input
-                        id="email"
-                        type="email"
-                        placeholder="seu@email.com"
-                        oninput="atualizarCurriculo()"
-                    >
-                </div>
-
-                <div class="field">
-                    <label>Telefone</label>
-                    <input
-                        id="telefone"
-                        type="text"
-                        placeholder="(11) 99999-9999"
-                        oninput="atualizarCurriculo()"
-                    >
-                </div>
-
-                <div class="field">
-                    <label>Cidade / Estado</label>
-                    <input
-                        id="cidade"
-                        type="text"
-                        placeholder="São Paulo - SP"
-                        oninput="atualizarCurriculo()"
-                    >
-                </div>
-
-                <div class="field">
-                    <label>LinkedIn (opcional)</label>
-                    <input
-                        id="linkedin"
-                        type="text"
-                        placeholder="linkedin.com/in/seunome"
-                        oninput="atualizarCurriculo()"
-                    >
-                </div>
-
-            </div>
-
-
-            <div class="form-section">
-
-                <h2>Resumo profissional</h2>
-
-                <div class="field">
-
-                    <textarea
-                        id="resumo"
-                        placeholder="Ex.: Profissional organizado, comunicativo e comprometido, com experiência em atendimento ao cliente e rotinas administrativas."
-                        oninput="atualizarCurriculo()"
-                    ></textarea>
-
-                    <small>
-                        Apresente rapidamente seus principais pontos fortes.
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-section">
-
-                <h2>Experiência profissional</h2>
-
-                <div class="field">
-                    <label>Cargo</label>
-                    <input
-                        id="expCargo"
-                        type="text"
-                        placeholder="Ex.: Assistente Administrativo"
-                        oninput="atualizarCurriculo()"
-                    >
-                </div>
-
-                <div class="field">
-                    <label>Empresa</label>
-                    <input
-                        id="expEmpresa"
-                        type="text"
-                        placeholder="Ex.: Empresa ABC"
-                        oninput="atualizarCurriculo()"
-                    >
-                </div>
-
-                <div class="field">
-                    <label>Período</label>
-                    <input
-                        id="expPeriodo"
-                        type="text"
-                        placeholder="2023 – 2025"
-                        oninput="atualizarCurriculo()"
-                    >
-                </div>
-
-                <div class="field">
-
-                    <label>Principais atividades e resultados</label>
-
-                    <textarea
-                        id="expDescricao"
-                        placeholder="Descreva suas principais atividades, responsabilidades e resultados."
-                        oninput="atualizarCurriculo()"
-                    ></textarea>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-section">
-
-                <h2>Formação</h2>
-
-                <div class="field">
-
-                    <textarea
-                        id="formacao"
-                        placeholder="Ex.: Administração — Universidade XYZ — 2022"
-                        oninput="atualizarCurriculo()"
-                    ></textarea>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-section">
-
-                <h2>Habilidades</h2>
-
-                <div class="field">
-
-                    <textarea
-                        id="habilidades"
-                        placeholder="Ex.: Excel, atendimento ao cliente, comunicação, organização, trabalho em equipe"
-                        oninput="atualizarCurriculo()"
-                    ></textarea>
-
-                    <small>
-                        Separe as habilidades por vírgulas.
-                    </small>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-section">
-
-                <h2>Idiomas</h2>
-
-                <div class="field">
-
-                    <input
-                        id="idiomas"
-                        type="text"
-                        placeholder="Ex.: Inglês intermediário, Espanhol básico"
-                        oninput="atualizarCurriculo()"
-                    >
-
-                </div>
-
-            </div>
-
-
-            <button
-                class="generate-btn"
-                onclick="gerarCurriculo()"
-            >
-                GERAR MEU CURRÍCULO →
-            </button>
+            <p class="cv-profile" id="cvPerfil"></p>
 
         </div>
 
 
-        <!-- =========================
-             PRÉVIA
-        ========================== -->
+        <div class="cv-section">
 
-        <div class="preview-area">
+            <h2 class="cv-section-title">
+                Experiência profissional
+            </h2>
 
-            <div class="preview-title">
-                PRÉVIA DO SEU CURRÍCULO
-            </div>
+            <div class="experiencia-item">
 
+                <div class="experiencia-top">
 
-            <div class="curriculo" id="curriculo">
+                    <div class="experiencia-cargo"
+                    id="cvExpCargo"></div>
 
+                    <div class="experiencia-data"
+                    id="cvPeriodo"></div>
 
-                <!-- LADO ESQUERDO -->
+                </div>
 
-                <aside class="cv-sidebar">
+                <div class="experiencia-empresa"
+                id="cvEmpresa"></div>
 
-                    <h1 id="cvNome">
-                        Seu Nome
-                    </h1>
-
-                    <div
-                        class="cv-cargo"
-                        id="cvCargo"
-                    >
-                        Cargo desejado
-                    </div>
-
-
-                    <div class="side-section">
-
-                        <h3>Contato</h3>
-
-                        <p id="cvContato">
-                            seu@email.com
-                            (11) 99999-9999
-                            São Paulo - SP
-                        </p>
-
-                    </div>
-
-
-                    <div
-                        class="side-section"
-                        id="linkedinBox"
-                    >
-
-                        <h3>LinkedIn</h3>
-
-                        <p id="cvLinkedin">
-                            —
-                        </p>
-
-                    </div>
-
-
-                    <div class="side-section">
-
-                        <h3>Formação</h3>
-
-                        <p id="cvFormacaoSide">
-                            Sua formação acadêmica
-                        </p>
-
-                    </div>
-
-
-                    <div class="side-section">
-
-                        <h3>Idiomas</h3>
-
-                        <p id="cvIdiomas">
-                            —
-                        </p>
-
-                    </div>
-
-                </aside>
-
-
-                <!-- LADO DIREITO -->
-
-                <section class="cv-main">
-
-
-                    <div class="cv-main-section">
-
-                        <h2>
-                            Perfil profissional
-                        </h2>
-
-                        <p id="cvResumo">
-                            Apresente aqui um resumo profissional objetivo, destacando sua experiência, suas principais competências e o valor que você pode trazer para a empresa.
-                        </p>
-
-                    </div>
-
-
-                    <div class="cv-main-section">
-
-                        <h2>
-                            Experiência profissional
-                        </h2>
-
-
-                        <div class="experiencia-item">
-
-                            <div class="exp-top">
-
-                                <div
-                                    class="exp-cargo"
-                                    id="cvExpCargo"
-                                >
-                                    Cargo
-                                </div>
-
-                                <div
-                                    class="exp-periodo"
-                                    id="cvExpPeriodo"
-                                >
-                                    Período
-                                </div>
-
-                            </div>
-
-                            <div
-                                class="exp-empresa"
-                                id="cvExpEmpresa"
-                            >
-                                Empresa
-                            </div>
-
-                            <div
-                                class="exp-descricao"
-                                id="cvExpDescricao"
-                            >
-                                Descreva suas principais atividades e resultados profissionais.
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="cv-main-section">
-
-                        <h2>
-                            Principais competências
-                        </h2>
-
-                        <div
-                            class="skills"
-                            id="cvSkills"
-                        >
-
-                            <span class="skill">
-                                Comunicação
-                            </span>
-
-                            <span class="skill">
-                                Organização
-                            </span>
-
-                            <span class="skill">
-                                Trabalho em equipe
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                </section>
+                <div class="experiencia-texto"
+                id="cvExperiencia"></div>
 
             </div>
-
-
-            <button
-                class="print-btn"
-                onclick="baixarCurriculo()"
-            >
-                🖨️ BAIXAR CURRÍCULO EM PDF
-            </button>
 
         </div>
 
-    </div>
 
+        <div class="cv-section">
 
-    <a
-        class="back-link"
-        href="index.html"
-    >
-        ← Voltar para FerramentasJá
+            <h2 class="cv-section-title">
+                Principais competências
+            </h2>
+
+            <div class="competencias" id="cvHabilidades"></div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<div class="download-area">
+
+    <a href="#"
+       class="download-button"
+       onclick="window.print(); return false;">
+
+        🖨️ BAIXAR / IMPRIMIR CURRÍCULO
+
     </a>
+
+</div>
+
+</div>
+
+<a class="voltar" href="index.html">
+    ← Voltar para FerramentasJá
+</a>
 
 </main>
 
 
 <footer>
 
-    <p>
-        © 2026 FerramentasJá — Ferramentas online gratuitas.
-    </p>
+<p>© 2026 FerramentasJá — Ferramentas online gratuitas.</p>
 
-    <div class="footer-links">
+<div class="footer-links">
 
-        <a href="sobre.html">
-            Sobre
-        </a>
+<a href="sobre.html">Sobre</a>
 
-        <a href="privacidade.html">
-            Política de Privacidade
-        </a>
+<a href="privacidade.html">
+Política de Privacidade
+</a>
 
-        <a href="termos.html">
-            Termos de Uso
-        </a>
+<a href="termos.html">
+Termos de Uso
+</a>
 
-    </div>
+</div>
 
 </footer>
 
 
 <script>
 
-/* =========================
-   FUNÇÕES
-========================= */
-
-function valor(id) {
-
-    return document
-        .getElementById(id)
-        .value
-        .trim();
-
-}
-
-
-function atualizarCurriculo() {
+function gerarCurriculo() {
 
     const nome =
-        valor("nome") || "Seu Nome";
+        document.getElementById("nome").value.trim();
 
-    const cargo =
-        valor("cargo") || "Cargo desejado";
+    if (!nome) {
 
-    const email =
-        valor("email");
+        alert("Digite seu nome completo.");
 
-    const telefone =
-        valor("telefone");
-
-    const cidade =
-        valor("cidade");
-
-    const linkedin =
-        valor("linkedin");
-
-    const resumo =
-        valor("resumo") ||
-        "Apresente aqui um resumo profissional objetivo, destacando sua experiência, suas principais competências e o valor que você pode trazer para a empresa.";
-
-    const expCargo =
-        valor("expCargo") || "Cargo";
-
-    const expEmpresa =
-        valor("expEmpresa") || "Empresa";
-
-    const expPeriodo =
-        valor("expPeriodo") || "Período";
-
-    const expDescricao =
-        valor("expDescricao") ||
-        "Descreva suas principais atividades e resultados profissionais.";
-
-    const formacao =
-        valor("formacao") ||
-        "Sua formação acadêmica";
-
-    const idiomas =
-        valor("idiomas") || "—";
+        return;
+    }
 
 
     document.getElementById("cvNome").textContent =
         nome;
 
     document.getElementById("cvCargo").textContent =
-        cargo;
+        document.getElementById("cargo").value;
 
-    document.getElementById("cvContato").textContent =
-        [email, telefone, cidade]
-        .filter(Boolean)
-        .join("\n");
 
-    document.getElementById("cvLinkedin").textContent =
-        linkedin || "—";
+    document.getElementById("cvEmail").textContent =
+        document.getElementById("email").value;
 
-    document.getElementById("cvFormacaoSide").textContent =
-        formacao;
+    document.getElementById("cvTelefone").textContent =
+        document.getElementById("telefone").value;
 
-    document.getElementById("cvIdiomas").textContent =
-        idiomas;
+    document.getElementById("cvCidade").textContent =
+        document.getElementById("cidade").value;
 
-    document.getElementById("cvResumo").textContent =
-        resumo;
+
+    document.getElementById("cvPerfil").textContent =
+        document.getElementById("perfil").value;
+
 
     document.getElementById("cvExpCargo").textContent =
-        expCargo;
+        document.getElementById("expCargo").value;
 
-    document.getElementById("cvExpEmpresa").textContent =
-        expEmpresa;
+    document.getElementById("cvEmpresa").textContent =
+        document.getElementById("empresa").value;
 
-    document.getElementById("cvExpPeriodo").textContent =
-        expPeriodo;
+    document.getElementById("cvPeriodo").textContent =
+        document.getElementById("periodo").value;
 
-    document.getElementById("cvExpDescricao").textContent =
-        expDescricao;
+    document.getElementById("cvExperiencia").textContent =
+        document.getElementById("experiencia").value;
 
 
-    /* HABILIDADES */
+    document.getElementById("cvFormacao").textContent =
+        document.getElementById("formacao").value;
 
-    const skills =
-        valor("habilidades")
+    document.getElementById("cvInstituicao").textContent =
+        document.getElementById("instituicao").value;
+
+
+    document.getElementById("cvIdiomas").textContent =
+        document.getElementById("idiomas").value;
+
+    document.getElementById("cvCursos").textContent =
+        document.getElementById("cursos").value;
+
+
+    const habilidades =
+        document.getElementById("habilidades").value;
+
+    const container =
+        document.getElementById("cvHabilidades");
+
+    container.innerHTML = "";
+
+    habilidades
         .split(",")
         .map(item => item.trim())
-        .filter(Boolean);
-
-
-    const skillsContainer =
-        document.getElementById("cvSkills");
-
-    skillsContainer.innerHTML = "";
-
-
-    if (skills.length === 0) {
-
-        skillsContainer.innerHTML = `
-            <span class="skill">Comunicação</span>
-            <span class="skill">Organização</span>
-            <span class="skill">Trabalho em equipe</span>
-        `;
-
-    } else {
-
-        skills.forEach(skill => {
+        .filter(item => item)
+        .forEach(item => {
 
             const span =
                 document.createElement("span");
 
-            span.className = "skill";
+            span.className = "competencia";
 
-            span.textContent = skill;
+            span.textContent = item;
 
-            skillsContainer.appendChild(span);
+            container.appendChild(span);
 
         });
 
-    }
 
-}
+    document.getElementById("resultado").style.display =
+        "block";
 
 
-function gerarCurriculo() {
-
-    const nome =
-        valor("nome");
-
-    if (!nome) {
-
-        alert(
-            "Digite seu nome completo para gerar o currículo."
-        );
-
-        document
-            .getElementById("nome")
-            .focus();
-
-        return;
-
-    }
-
-    atualizarCurriculo();
-
-    document
-        .getElementById("curriculo")
+    document.getElementById("resultado")
         .scrollIntoView({
-            behavior: "smooth",
-            block: "start"
+            behavior: "smooth"
         });
-
 }
-
-
-function baixarCurriculo() {
-
-    atualizarCurriculo();
-
-    window.print();
-
-}
-
-
-/* Atualiza a prévia ao abrir */
-
-atualizarCurriculo();
 
 </script>
 
