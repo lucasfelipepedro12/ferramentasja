@@ -4,8 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Currículo Profissional PRO | FerramentasJá</title>
-<meta name="description" content="Crie um currículo profissional moderno e pronto para imprimir.">
+<title>Gerador de Currículo Profissional Online Grátis | FerramentasJá</title>
+
+<meta name="description" content="Crie seu currículo profissional online grátis, moderno e pronto para imprimir. Preencha seus dados, experiências, formação e competências no FerramentasJá.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://ferramentaja.com.br/curriculo-pro.html">
 
 <link rel="stylesheet" href="style.css">
 
@@ -310,7 +315,6 @@ body {
     text-decoration: none;
 }
 
-
 .form-intro {
     background: #fff8e8;
     border-left: 4px solid #f5a900;
@@ -318,21 +322,25 @@ body {
     border-radius: 8px;
     margin-bottom: 25px;
 }
+
 .form-intro strong {
     display: block;
     color: #222;
     margin-bottom: 3px;
 }
+
 .form-intro span,
 .campo small {
     color: #777;
     font-size: 12px;
 }
+
 .form-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0 18px;
 }
+
 .experience-box {
     padding: 18px;
     margin-top: 18px;
@@ -340,19 +348,39 @@ body {
     border-radius: 12px;
     background: #11141b;
 }
+
 .experience-box .campo {
     margin-top: 12px;
 }
+
 .campo small {
     display: block;
     margin-top: 6px;
 }
+
 .cv-side-section .linkedin {
     overflow-wrap: anywhere;
 }
+
 .cv-empty {
     display: none;
 }
+
+.seo-text {
+    margin-top: 35px;
+    text-align: left;
+}
+
+.seo-text h2 {
+    margin-top: 30px;
+    color: #ffffff;
+}
+
+.seo-text p {
+    color: #aeb4c0;
+    line-height: 1.7;
+}
+
 @media (max-width: 650px) {
     .form-grid {
         grid-template-columns: 1fr;
@@ -397,6 +425,7 @@ body {
 }
 
 /* ===== IMPRESSÃO / PDF ===== */
+
 @media print {
     @page {
         size: A4 portrait;
@@ -410,7 +439,7 @@ body {
         background: #fff !important;
     }
 
-    header, footer, .cv-header, .cv-form, .download-area, .voltar {
+    header, footer, .cv-header, .cv-form, .download-area, .voltar, .seo-text {
         display: none !important;
     }
 
@@ -605,14 +634,13 @@ body {
 
     <span class="cv-tag">👑 FERRAMENTA PRO</span>
 
-    <h1>Gerador de Currículo</h1>
+    <h1>Gerador de Currículo Profissional Online</h1>
 
     <p>
-        Crie um currículo moderno, profissional e pronto para enviar.
+        Crie um currículo moderno, profissional e pronto para imprimir.
     </p>
 
 </div>
-
 
 <div class="cv-form">
 
@@ -656,52 +684,69 @@ body {
     </div>
 
     <h2>🎯 Perfil profissional</h2>
+
     <div class="campo">
         <label>Apresente seu perfil em 3 a 5 linhas</label>
+
         <textarea id="perfil" placeholder="Ex.: Profissional com 4 anos de experiência na área administrativa, com foco em organização de processos, atendimento e controle de documentos. Perfil proativo, organizado e orientado a resultados."></textarea>
-        <small>Evite frases genéricas. Diga sua área, experiência e principais pontos fortes.</small>
+
+        <small>
+            Evite frases genéricas. Diga sua área, experiência e principais pontos fortes.
+        </small>
     </div>
 
     <h2>💼 Experiência profissional</h2>
 
     <div class="experience-box">
         <div class="form-grid">
+
             <div class="campo">
                 <label>Cargo</label>
                 <input id="expCargo" placeholder="Ex.: Assistente Administrativo">
             </div>
+
             <div class="campo">
                 <label>Empresa</label>
                 <input id="empresa" placeholder="Ex.: Empresa ABC">
             </div>
+
             <div class="campo">
                 <label>Período</label>
                 <input id="periodo" placeholder="2022 - 2025">
             </div>
+
         </div>
+
         <div class="campo">
             <label>Atividades e resultados</label>
+
             <textarea id="experiencia" placeholder="Ex.: Atendimento a clientes, organização de documentos e controle de planilhas. Reduzi atrasos no processo de conferência e mantive os arquivos atualizados."></textarea>
         </div>
     </div>
 
     <div class="experience-box">
         <div class="form-grid">
+
             <div class="campo">
                 <label>Cargo anterior</label>
                 <input id="expCargo2" placeholder="Ex.: Auxiliar Administrativo">
             </div>
+
             <div class="campo">
                 <label>Empresa anterior</label>
                 <input id="empresa2" placeholder="Ex.: Empresa XYZ">
             </div>
+
             <div class="campo">
                 <label>Período</label>
                 <input id="periodo2" placeholder="2020 - 2022">
             </div>
+
         </div>
+
         <div class="campo">
             <label>Atividades e resultados</label>
+
             <textarea id="experiencia2" placeholder="Descreva as principais atividades e algum resultado alcançado."></textarea>
         </div>
     </div>
@@ -709,35 +754,48 @@ body {
     <h2>🎓 Formação acadêmica</h2>
 
     <div class="form-grid">
+
         <div class="campo">
             <label>Curso / Formação</label>
             <input id="formacao" placeholder="Ex.: Administração">
         </div>
+
         <div class="campo">
             <label>Instituição</label>
             <input id="instituicao" placeholder="Ex.: Universidade XYZ">
         </div>
+
         <div class="campo">
             <label>Período</label>
             <input id="periodoFormacao" placeholder="2021 - 2025">
         </div>
+
     </div>
 
     <h2>⭐ Competências</h2>
+
     <div class="campo">
         <label>Separe por vírgulas</label>
+
         <textarea id="habilidades" placeholder="Ex.: Excel, Comunicação, Organização, Liderança, Atendimento ao cliente"></textarea>
-        <small>Escolha competências que realmente tenham relação com a vaga.</small>
+
+        <small>
+            Escolha competências que realmente tenham relação com a vaga.
+        </small>
     </div>
 
     <h2>🌎 Idiomas</h2>
+
     <div class="campo">
         <input id="idiomas" placeholder="Ex.: Inglês intermediário, Espanhol básico">
     </div>
 
     <h2>📚 Cursos e certificações</h2>
+
     <div class="campo">
-        <textarea id="cursos" placeholder="Ex.: Excel Avançado — 2025&#10;Power BI — 2024&#10;Atendimento ao Cliente — 2024"></textarea>
+        <textarea id="cursos" placeholder="Ex.: Excel Avançado — 2025
+Power BI — 2024
+Atendimento ao Cliente — 2024"></textarea>
     </div>
 
     <button class="gerar-button" onclick="gerarCurriculo()">
@@ -745,8 +803,6 @@ body {
     </button>
 
 </div>
-
-
 
 <div class="resultado-cv" id="resultado">
 
@@ -799,7 +855,6 @@ body {
 
     </aside>
 
-
     <!-- PRINCIPAL -->
 
     <section class="cv-principal">
@@ -814,7 +869,6 @@ body {
 
         </div>
 
-
         <div class="cv-section">
 
             <h2 class="cv-section-title">
@@ -824,26 +878,36 @@ body {
             <div class="experiencia-item" id="experienciaItem1">
 
                 <div class="experiencia-top">
+
                     <div class="experiencia-cargo" id="cvExpCargo"></div>
+
                     <div class="experiencia-data" id="cvPeriodo"></div>
+
                 </div>
 
                 <div class="experiencia-empresa" id="cvEmpresa"></div>
+
                 <div class="experiencia-texto" id="cvExperiencia"></div>
 
             </div>
 
             <div class="experiencia-item" id="experienciaItem2">
+
                 <div class="experiencia-top">
+
                     <div class="experiencia-cargo" id="cvExpCargo2"></div>
+
                     <div class="experiencia-data" id="cvPeriodo2"></div>
+
                 </div>
+
                 <div class="experiencia-empresa" id="cvEmpresa2"></div>
+
                 <div class="experiencia-texto" id="cvExperiencia2"></div>
+
             </div>
 
         </div>
-
 
         <div class="cv-section">
 
@@ -873,12 +937,32 @@ body {
 
 </div>
 
+<section class="seo-text">
+
+    <h2>Gerador de currículo online grátis</h2>
+
+    <p>
+        Crie um currículo profissional online preenchendo seus dados pessoais,
+        objetivo profissional, experiências, formação acadêmica, competências,
+        idiomas e cursos. Depois, gere seu currículo e utilize a opção de
+        impressão para salvar ou imprimir o documento.
+    </p>
+
+    <h2>Como criar um currículo profissional?</h2>
+
+    <p>
+        Informe seus dados de contato, descreva sua experiência profissional,
+        formação e principais competências. Use informações objetivas e destaque
+        resultados relevantes para aumentar a clareza do seu currículo.
+    </p>
+
+</section>
+
 <a class="voltar" href="index.html">
     ← Voltar para FerramentasJá
 </a>
 
 </main>
-
 
 <footer>
 
@@ -900,8 +984,6 @@ Termos de Uso
 
 </footer>
 
-
-
 <script>
 function valor(id) {
     return document.getElementById(id).value.trim();
@@ -913,10 +995,14 @@ function preencher(id, value) {
 
 function atualizarVisibilidade(id, value) {
     const el = document.getElementById(id);
-    if (el) el.style.display = value ? "" : "none";
+
+    if (el) {
+        el.style.display = value ? "" : "none";
+    }
 }
 
 function gerarCurriculo() {
+
     const nome = valor("nome");
 
     if (!nome) {
@@ -952,7 +1038,9 @@ function gerarCurriculo() {
     preencher("cvCursos", valor("cursos"));
 
     const habilidades = valor("habilidades");
+
     const container = document.getElementById("cvHabilidades");
+
     container.innerHTML = "";
 
     habilidades.split(",")
@@ -960,23 +1048,32 @@ function gerarCurriculo() {
         .filter(Boolean)
         .slice(0, 12)
         .forEach(item => {
+
             const span = document.createElement("span");
+
             span.className = "competencia";
             span.textContent = item;
+
             container.appendChild(span);
+
         });
 
-    atualizarVisibilidade("experienciaItem2",
-        valor("expCargo2") || valor("empresa2") || valor("periodo2") || valor("experiencia2"));
+    atualizarVisibilidade(
+        "experienciaItem2",
+        valor("expCargo2") ||
+        valor("empresa2") ||
+        valor("periodo2") ||
+        valor("experiencia2")
+    );
 
     document.getElementById("resultado").style.display = "block";
+
     document.getElementById("resultado").scrollIntoView({
         behavior: "smooth",
         block: "start"
     });
 }
 </script>
-
 
 </body>
 </html>
