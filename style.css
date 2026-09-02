@@ -748,3 +748,54 @@ footer {
         font-size: 26px;
     }
 }
+
+/* =========================
+   TEXTO SEO
+========================= */
+
+.seo-text {
+    max-width: 760px;
+    margin: 45px auto 0;
+    padding: 30px 0 0;
+}
+
+.seo-text h2 {
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0 0 12px;
+}
+
+.seo-text p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0 0 28px;
+}
+
+.seo-text a {
+    color: #6fa1ff;
+    text-decoration: none;
+}
+
+.seo-text a:hover {
+    color: var(--blue);
+    text-decoration: underline;
+}
+
+@media (max-width: 650px) {
+
+    .seo-text {
+        margin-top: 35px;
+        padding-top: 20px;
+    }
+
+    .seo-text h2 {
+        font-size: 23px;
+    }
+
+    .seo-text p {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+}
